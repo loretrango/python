@@ -1,6 +1,58 @@
 import math
 import numbers
 
+#### MENU
+def menu():
+    print("MENU")
+    print("1 - Calcola cilindro")
+    print("2 - Calcola cono")
+    print("3 - Calcola parallelepipedo")
+    print("4 - Calcola Pitagora")
+    print("5 - Serie di Fibonacci")
+    print("6 - Insiemi")
+    print("7 - Validità triangolo")
+    print("8 - Calcola trapezio")
+    print("9 - Quadrato")
+    print("10 - Potenza")
+    print("11 - Fattoriale")
+    print("12 - Esponenziale")
+
+    print("0 - Esci")
+
+    while True:
+        print()
+        print("-----------")
+        scelta = input("Fai una scelta: ")
+        
+        if scelta == "1":
+            calcola_cilindro()
+        elif scelta == "2":
+            calcola_cono()
+        elif scelta == "3":
+            calcola_parallelepipedo()
+        elif scelta == "4":
+            calcola_pitagora()
+        elif scelta == "5":
+            fibonacci()
+        elif scelta == "6":
+            insiemi()
+        elif scelta == "7":
+            validita_triangolo()
+        elif scelta == "8":
+            calcola_trapezio()
+        elif scelta == "9":
+            quadrato()
+        elif scelta == "10":
+            potenza()
+        elif scelta == "11":
+            fattoriale()
+        elif scelta == "12":
+            esponenziale()
+        elif scelta == "0":
+            break
+        else:
+            print("Scelta non valida. Riprova.")
+
 
 def validita_triangolo():
 
@@ -287,57 +339,7 @@ def calcola_trapezio():
     area = (base_1+base_2)*altezza/2
     print("Area: ",area)
 
-#### MENU
-def menu():
-    print("MENU")
-    print("1 - Calcola cilindro")
-    print("2 - Calcola cono")
-    print("3 - Calcola parallelepipedo")
-    print("4 - Calcola Pitagora")
-    print("5 - Serie di Fibonacci")
-    print("6 - Insiemi")
-    print("7 - Validità triangolo")
-    print("8 - Calcola trapezio")
-    print("9 - Quadrato")
-    print("10 - Potenza")
-    print("11 - Fattoriale")
-    print("12 - Esponenziale")
 
-    print("0 - Esci")
-
-    while True:
-        print()
-        print("-----------")
-        scelta = input("Fai una scelta: ")
-        
-        if scelta == "1":
-            calcola_cilindro()
-        elif scelta == "2":
-            calcola_cono()
-        elif scelta == "3":
-            calcola_parallelepipedo()
-        elif scelta == "4":
-            calcola_pitagora()
-        elif scelta == "5":
-            fibonacci()
-        elif scelta == "6":
-            insiemi()
-        elif scelta == "7":
-            validita_triangolo()
-        elif scelta == "8":
-            calcola_trapezio()
-        elif scelta == "9":
-            quadrato()
-        elif scelta == "10":
-            potenza()
-        elif scelta == "11":
-            fattoriale()
-        elif scelta == "12":
-            esponenziale()
-        elif scelta == "0":
-            break
-        else:
-            print("Scelta non valida. Riprova.")
                               
 ## Fattoriale
 def fattoriale():
