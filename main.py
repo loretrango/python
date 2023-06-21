@@ -23,5 +23,3 @@ menu()
 
 
 print("Programma terminato")
-#    #######
-
