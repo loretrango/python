@@ -35,6 +35,7 @@ def menu():
         print("20 - Converti file in PDF")
         print("21 - Operazioni con le liste")
         print("22 - Lista quadrati")
+        print("23 - Lista pari dispari")
 
         print("0 - Esci")
 
@@ -90,6 +91,8 @@ def menu():
             lista()
         elif scelta == "22":
             lista_quadrati()
+        elif scelta == "23":
+            lista_pari_dispari()
         elif scelta == "0":
             break
         else:
@@ -806,5 +809,40 @@ def lista_quadrati():
     print("Lista quadrati: ")
     print(squares)
 
+def lista_pari_dispari():
+    print("LISTA PARI DISPARI")
+    print("Data una lista di numeri, \nrestituisce una lista di quelli PARI e una lista di quelli DISPARI")
 
+    elemento = ""
+    lista = []
+    while elemento != "fine":
+        elemento = input("Inserisci un numero nella lista (\"digita 'fine' per terminare\"): ")
+        if elemento != "fine":
+            lista.append(elemento)
+    
+    indice = 0
+    for elemento in lista:
+        elemento = int(elemento)
+        lista[indice] = elemento
+        indice = indice + 1
+    
+    print()
+    print("Lista di numeri:")
+    print(lista)
+    print()
+
+    input( "Premi INVIO")
+    pari = [x for x in lista if x % 2 == 0]
+    print("Pari:")
+    print(pari)
+    print()
+
+   input( "Premi INVIO")
+    dispari = [x for x in lista if x%2 != 0]
+    print("Dispari:")
+    print(dispari)
+    print()
+
+
+###############################
 menu()
