@@ -33,6 +33,7 @@ def menu():
         print("18 - Tavola numerica")
         print("19 - Tavola numerica: quadrati perfetti")
         print("20 - Converti file in PDF")
+        print("21 - Operazioni con le liste")
 
         print("0 - Esci")
 
@@ -84,6 +85,8 @@ def menu():
             tavola_numerica_quad_perf()
         elif scelta == "20":
             file_in_pdf()
+        elif scelta == "21":
+            lista()
         elif scelta == "0":
             break
         else:
@@ -695,5 +698,63 @@ def file_in_pdf():
 
     convert_to_pdf(input_file_path, output_file_path)
 
+def lista():
+    print("Operazioni con le liste")
+    lista = ["melone", "pane", "aceto"]
+    print("esempio di lista della spesa:")
+    print(lista)
+    print()
+
+    print("Lunghezza della lista: "+ str(len(lista)))
+    print()
+
+    print("Primo elemento della lista: "+ lista[0])
+    print("Ultimo elemento della lista: " + lista[len(lista)-1])
+    print()
+
+    print("Stampa ogni singolo elemento della lista e il suo index: ")
+    indice = 0
+    for elemento in lista:
+        print(indice, elemento)
+        indice = indice + 1
+    print()
+
+    lista_vuota = []
+    print("Lista vuota:")
+    print(lista_vuota)
+    print()
+
+    print("Aggiungi un elemento alla lista: lista.append(\"nome\")")
+    nuovo_elemento = input("Scrivi elemento: ")
+    lista.append(nuovo_elemento)
+    print(lista)
+    print()
+
+    print("Cancella un elemento con un dato indice: del lista[indice_elemento] ")
+    indice_elemento = int(input("Indice elemento: "))
+    del lista[indice_elemento]
+    print(lista)
+    print()
+
+    print("Cancella elemento dato il suo nome: lista.remove(\"nome\")")
+    elemento = input("Elemento da cancellare: ")
+    lista.remove(elemento)
+    print(lista)
+    print()
+
+    print("Aggiunge alcuni elementi numerici")
+    elemento = 0
+    for elemento in range(10):
+        lista.append(elemento)
+        elemento = elemento + 1
+    print(lista)
+    print()
+
+    print("Rimuove l'usltimo elemento e ritorna la lista con l'elemento rimosso: lista.pop()")
+    for pop in range(len(lista)):
+        popped = lista.pop()
+        print(lista)
+
+
+
 menu()
-print()
