@@ -694,7 +694,7 @@ def file_in_pdf():
     output_file_path = input("Inserisci il percorso del fil di output: ")
 
     convert_to_pdf(input_file_path, output_file_path)
-    
 
+print()
 menu()
 
