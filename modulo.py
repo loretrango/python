@@ -1,29 +1,49 @@
 import math
 import numbers
+import inspect
+import sys
+import datetime
+import pdfkit
+#from tee import Tee
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 #### MENU
 def menu():
-    print("MENU")
-    print("1 - Calcola cilindro")
-    print("2 - Calcola cono")
-    print("3 - Calcola parallelepipedo")
-    print("4 - Calcola Pitagora")
-    print("5 - Serie di Fibonacci")
-    print("6 - Insiemi")
-    print("7 - Validità triangolo")
-    print("8 - Calcola trapezio")
-    print("9 - Quadrato")
-    print("10 - Potenza")
-    print("11 - Fattoriale")
-    print("12 - Esponenziale")
+    def menu_elenco():
+        print("MENU:")
+        print("1 - Calcola cilindro")
+        print("2 - Calcola cono")
+        print("3 - Calcola parallelepipedo")
+        print("4 - Calcola Pitagora")
+        print("5 - Serie di Fibonacci")
+        print("6 - Insiemi")
+        print("7 - Validità triangolo")
+        print("8 - Calcola trapezio")
+        print("9 - Quadrato")
+        print("10 - Potenza")
+        print("11 - Fattoriale")
+        print("12 - Esponenziale")
+        print("13 - Calcola quadrato")
+        print("14 - Serie di Gauss")
+        print("15 - Stampa su file")
+        print("16 - Ripeti frase")
+        print("17 - Scatter plot (grafico)")
+        print("18 - Tavola numerica")
+        print("19 - Tavola numerica: quadrati perfetti")
+        print("20 - Converti file in PDF")
 
-    print("0 - Esci")
+        print("0 - Esci")
 
     while True:
         print()
         print("-----------")
-        scelta = input("Fai una scelta: ")
-        
+        input("Premi un ENTER per mostrare il MENU: ...")
+        menu_elenco()
+        scelta = input("\nFai una scelta: ")
+
+
         if scelta == "1":
             calcola_cilindro()
         elif scelta == "2":
@@ -48,11 +68,26 @@ def menu():
             fattoriale()
         elif scelta == "12":
             esponenziale()
+        elif scelta == "13":
+            calcola_quadrato()
+        elif scelta == "14":
+            serie_gauss()
+        elif scelta == "15":
+            stampa_su_file()
+        elif scelta == "16":
+            ripeti_frase()
+        elif scelta == "17":
+            scatter_plot()
+        elif scelta == "18":
+            tavola_numerica()
+        elif scelta == "19":
+            tavola_numerica_quad_perf()
+        elif scelta == "20":
+            file_in_pdf()
         elif scelta == "0":
             break
         else:
             print("Scelta non valida. Riprova.")
-
 
 def validita_triangolo():
 
@@ -82,7 +117,6 @@ def validita_triangolo():
             print("c+a<=b")
         else:
             print("a+b<=c")
-
 ##########################
 
 def calcola_pitagora():
@@ -122,7 +156,6 @@ def calcola_pitagora():
         print("Ipotenusa = radquad(",cateto1**2," + ", cateto2**2,")")
         print("Ipotenusa = radquad(",cateto1**2+cateto2**2,")")
         print("Ipotenusa = ",ipotenusa)
-
 ##############
 
 def calcola_parallelepipedo():
@@ -150,7 +183,7 @@ def calcola_parallelepipedo():
     print("Area laterale: \t", area_laterale)
     area_totale=area_base+area_laterale
     print("Area totale: \t", area_totale)
-
+    print()
 ##############
 
 def calcola_cilindro():
@@ -181,6 +214,16 @@ def calcola_cilindro():
     volume_pi=area_base_pi*altezza
     volume=volume_pi*math.pi
     print("Volume: ",volume_pi,"*pi=",volume)
+
+    ### stampa il cilindro
+    with open("output.txt", "a") as file:
+        # Redirect the print output to the file
+        tempo = datetime.datetime.today()
+        file.write("\n\n"+str(tempo)+"\n")
+        file.write("Area base: "+str(round(area_base,2))+"\n"+
+                   "Area laterale: "+str(area_laterale)+"\n"+
+                   "Area totale: "+str(area_totale))
+        print(datetime.datetime.today())
 
 ##############
 
@@ -233,28 +276,8 @@ def calcola_cono():
     if 'apotema' in locals():
         print("Apotema: ",apotema)
 
-##    print('raggio' in locals())
-##    print('altezza' in locals())
-##    print('apotema' in locals())
-
-
     print()
     print("SVOLGIMENTO:")
-
-    ##if 'raggio' in locals():
-    ##    if 'altezza' in locals():
-    ##        apotema = math.sqrt(raggio ** 2 + altezza ** 2)
-    ##        print("Apotema: ", apotema)
-    ##    elif 'apotema' in locals():
-    ##        altezza = math.sqrt(apotema ** 2 - raggio ** 2)
-    ##        print("Altezza: ", altezza)
-    ##if 'apotema' in locals():
-    ##    if 'altezza' in locals():
-    ##        raggio = math.sqrt(apotema ** 2 - altezza ** 2)
-    ##        print("Raggio: ", raggio)
-    ##        
-    ##print("##")
-
     if 'raggio' in locals() and 'altezza' in locals():
         apotema = math.sqrt(raggio ** 2 + altezza ** 2)
         print("Apotema: ", apotema)
@@ -293,7 +316,6 @@ def calcola_cono():
         print("Volume: ", volume_pi, "*\u03C0 =", volume)
 
 ####
-# fibonacci
 def fibonacci():
     a=0
     n=input("Calcola serie di Fibonacci del numero: ") 
@@ -315,6 +337,8 @@ def insiemi():
 ##    print(b)
     b_set=set(b)
     print(b_set)
+
+    input("")
 
     print()
     print("Intersezione a&b, a \u2229 b:")
@@ -338,14 +362,15 @@ def calcola_trapezio():
 
     area = (base_1+base_2)*altezza/2
     print("Area: ",area)
-
-
                               
 ## Fattoriale
 def fattoriale():
     print("FATTORIALE")
+    print("Calcola il fattoriale n! di un numero n")
     n = int(input("Inserisci un numero intero: "))
 
+    print("n","\t","n!")
+    print("-------------------")
     for i in range(n):
 
         print(i,"\t", math.factorial(i))
@@ -354,6 +379,7 @@ def fattoriale():
 def quadrato():
     print("QUADRATO")
     n = int(input("Inserisci un numero intero: "))
+    print("n","\t","n^2")
     for i in range(n):
         print(i,"\t", i**2)
 
@@ -368,7 +394,306 @@ def potenza():
 ## esponenziale
 def esponenziale():
     print("ESPONENZIALE")
+    print("Calcola la potenza di un numero 'a', \ncon un esponente che va da '0' fino a 'n'")
     n = int(input("Inserisci un numero intero del massimo esponente: "))
-    b = int(input("Inserisci numero intero della base: "))
+    a = int(input("Inserisci numero intero \"a\" della base: "))
+    
+    print("n","\t"+str(a)+"^n")
     for i in range(n+1):
-        print(i,"\t", math.pow(b,i))
+        print(i,"\t", math.pow(a,i))
+
+## funzione di prova per il commit
+def calcola_quadrato():
+    
+    scelta = input("Cosa conosci? \nSpigolo(l), \ndiagonale(d)\n")
+    if scelta == "l":
+        lato = float(input("Inserisci la misura del lato: "))
+        diagonale = lato*math.sqrt(2)
+    elif scelta == "d":
+        diagonale = float(input("Inserisci la misura della diagonale: "))
+        lato = diagonale/math.sqrt(2)
+    else: 
+        print("Dato inserito non corretto, riprova")
+        calcola_quadrato()
+    
+    perimetro = lato * 4
+    area = lato**2
+    print("Perimetro =", perimetro)
+    print("Area =", area)
+
+def serie_gauss():
+    print("SERIE DI GAUSS")
+    n = int(input("Inserisci un numero del quale vuoi calcolare la serie di Gauss: "))
+
+    minimo = 0
+    serie_n = 0
+    print("n\tSerieGauss(n)")
+    for numero in range(n):
+        serie_n = serie_n + minimo
+        minimo +=1
+        print(str(numero)+"\t"+str(serie_n))
+
+    print("\n")
+    # minimo = 0
+    # serie_n = 0
+    # for numero in range(n):
+    #     serie_n = serie_n + minimo
+    #     print("S",numero," = ", end="")
+        
+    #     if numero == 0:
+    #         print("0")
+    #     elif numero == 1:
+    #         print("1")
+    #     else:
+    #         print("1", end='')
+    #         for x in range(2,numero+1):
+    #                 print(" +", x, end='')
+        
+    #         print(" =",serie_n)
+        
+    #     minimo+=1
+
+def stampa_su_file():
+    with open("output.txt", "a") as file:
+        # Redirect the print output to the file
+        testo=input ("cosa vuoi stampare?: ")
+        file.write("\n")
+        print(datetime.datetime.today())
+        tempo = datetime.datetime.today()
+        file.write("\n"+testo)
+        file.write("\n"+str(tempo))
+        # print(testo,file=file)
+        # print("Hello, World!", file=file)
+        # print("This is another line.", file=file)
+        # print("And another one.", file=file)
+
+def ripeti_frase():
+    print("RIPETI FRASE")
+    print("Ripete e scrive su un file (output.txt) una frase data")
+    with open("output.txt", "w") as file:
+        frase = input("Cosa vuoi scrivere? ")
+        righe = int(input("Su quante righe lo vuoi scrivere? "))
+        colonne = int(input("Su quante colonne lo vuoi scrivere? "))
+        riga=0
+        colonna=0 
+        input("Premi un tasto per iniziore: ...")
+        for riga in range(righe):
+            for colonna in range(colonne):
+                file.write(frase+". ")
+                print(frase+". ", end="")
+            file.write("\n")
+            print("\n")
+
+def scatter_plot():
+
+    print("SCATTER PLOT")
+    print("Grafico con numerio casuali")
+    x = np.random.randint(100, size=(100))
+    y = np.random.randint(100, size=(100))
+    colors = np.random.randint(100, size=(100))
+    sizes = 10 * np.random.randint(100, size=(100))
+
+    plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='nipy_spectral')
+    plt.colorbar()
+    plt.show() 
+
+def tavola_numerica():
+    ## scrive su schermo
+    print("TAVOLA NUMERICA")
+    print("Stampa la tavola numerica a video e sul file tavola_numerica.txt")
+    minimo = int(input("Inserisci numero minimo: "))
+    n = int(input("Inserisci numero massimo: "))
+
+    print("n" 
+          + "\t" + "n^2" 
+          + "\t\t" + "n^3" 
+          + "\t\t" + "rad_quad(n)" 
+          + "\t\t" + "rad_cub(n)")
+    print("---------------------------------------------------------------------------")
+
+    i = 0
+
+    for i in range(minimo, n+1):
+        n_quadrato = i**2
+        n_cubo = i**3
+        n_radquad = round(math.sqrt(i), 4)
+        n_radcub = round(i**(1/3), 4)
+
+        print(str(i) 
+              + "\t" + str(n_quadrato) 
+              + "\t\t" + str(n_cubo) 
+              + "\t\t" + str(n_radquad) 
+              + "\t\t\t" + str(n_radcub))
+        i=i+1
+
+        ## Scrive la tavola su un file
+        with open("tavola_numerica.txt", "w") as file:
+            i = 0
+
+            intestazione = ("n" 
+                + "\t" + "n^2" 
+                + "\t\t" + "n^3" 
+                + "\t\t" + "rad_quad(n)" 
+                + "\t\t" + "rad_cub(n)")
+            
+            file.write(intestazione + "\n")
+            file.write("---------------------------------------------------------------------------\n")
+            
+            for i in range(minimo, n+1):
+                n_quadrato = i**2
+                n_cubo = i**3
+                n_radquad = round(math.sqrt(i), 4)
+                n_radcub = round(i**(1/3), 4)
+
+                riga = (str(i) 
+                    + "\t" + str(n_quadrato) 
+                    + "\t\t" + str(n_cubo) 
+                    + "\t\t" + str(n_radquad) 
+                    + "\t\t\t" + str(n_radcub))
+
+                file.write(riga)
+                file.write("\n")
+
+                i=i+1
+                
+## Output su file
+def tavola_numerica_stdout():
+    n = int(input("Inserisci fino a quale numero 'n' vuoi calcolare la tavola periodica: "))
+
+    with open('tavola_sys.txt', 'w') as f:
+        sys.stdout = f
+
+        print("n" + "\t" + "n^2" + "\t\t" + "n^3" + "\t\t" + "rad_quad(n)" + "\t\t" + "rad_cub(n)")
+        print("----------------------------------------------------------------")
+
+        for i in range(n + 1):
+            n_quadrato = i ** 2
+            n_cubo = i ** 3
+            n_radquad = round(math.sqrt(i), 4)
+            n_radcub = round(i ** (1 / 3), 4)
+
+            print(str(i) 
+                  + "\t" + str(n_quadrato) 
+                  + "\t\t" + str(n_cubo) 
+                  + "\t\t" + str(n_radquad).ljust(13) 
+                  + "\t\t\t" + str(n_radcub))
+        
+        sys.stdout = sys.__stdout__ ## ripristina il normale output
+    
+## output multipli (ci sono errori da correggere)
+def tavola_numerica_tee():
+    n = int(input("Inserisci fino a quale numero 'n' vuoi calcolare la tavola periodica: "))
+
+    with open('tavola_sys.txt', 'w') as f:
+
+        def write_output(line):
+            print(line)
+            print(line, file=f)
+            #f.flush()  # Flush the file buffer to ensure immediate write
+        
+        sys.stdout = write_output
+
+        print("n" + "\t" 
+              + "n^2" 
+              + "\t\t" + "n^3" 
+              + "\t\t" + "rad_quad(n)" 
+              + "\t\t" + "rad_cub(n)")
+        print("----------------------------------------------------------------")
+
+        for i in range(n + 1):
+            n_quadrato = i ** 2
+            n_cubo = i ** 3
+            n_radquad = round(math.sqrt(i), 4)
+            n_radcub = round(i ** (1 / 3), 4)
+
+            print(str(i) + "\t" 
+                  + str(n_quadrato) 
+                  + "\t\t" + str(n_cubo) 
+                  + "\t\t" + str(n_radquad).ljust(13) 
+                  + "\t\t\t" + str(n_radcub))
+        
+        # ripristina il normale output
+        sys.stdout = sys.__stdout__ 
+
+
+
+def tavola_numerica_quad_perf():
+    ## scrive su schermo
+    print("TAVOLA NUMERICA - Quadrati perfetti")
+    print("Stampa i quadrati perfetti della tavola numerica a video e sul file tavola_numerica_quad_perf.txt")
+    minimo = int(input("Inserisci numero minimo: "))
+    n = int(input("Inserisci numero massimo: "))
+
+    print("n" 
+          + "\t" + "n^2" 
+          + "\t\t" + "n^3" 
+          + "\t\t" + "rad_quad(n)" 
+          + "\t\t" + "rad_cub(n)")
+    print("---------------------------------------------------------------------------")
+
+    i = 0
+
+
+    for i in range(minimo, n+1):
+        n_quadrato = i**2
+        n_cubo = i**3
+        n_radquad = math.sqrt(i)
+        n_radcub = i**(1/3)
+        
+        if n_radquad%2 == 0:
+            print(str(i) 
+                + "\t" + str(n_quadrato) 
+                + "\t\t" + str(n_cubo) 
+                + "\t\t" + str(round(n_radquad,4))
+                + "\t\t\t" + str(round(n_radcub,4)))
+            i=i+1
+
+        ## Scrive la tavola su un file
+        with open("tavola_numerica_quad_perf.txt", "w") as file:
+            i = 0
+
+            intestazione = ("n" 
+                + "\t" + "n^2" 
+                + "\t\t" + "n^3" 
+                + "\t\t" + "rad_quad(n)" 
+                + "\t\t" + "rad_cub(n)")
+            
+            file.write(intestazione + "\n")
+            file.write("---------------------------------------------------------------------------\n")
+            
+            for i in range(minimo, n+1):
+                n_quadrato = i**2
+                n_cubo = i**3
+                n_radquad = math.sqrt(i)
+                n_radcub = i**(1/3)
+                
+                if n_radquad%2 == 0:
+                    n_radcub = round(n_radcub, 4)
+
+                    riga = (str(i) 
+                        + "\t" + str(n_quadrato) 
+                        + "\t\t" + str(n_cubo) 
+                        + "\t\t" + str(n_radquad) 
+                        + "\t\t\t" + str(n_radcub))
+
+                    file.write(riga)
+                    file.write("\n")
+
+                    i=i+1
+
+def file_in_pdf():
+    
+    def convert_to_pdf(input_file, output_file):
+        try:
+            pdfkit.from_file(input_file, output_file)
+            print("File convetito in PDF con successo.")
+        except Exception as e:
+            print("Errore nella conversione:", str(e))
+    
+    input_file_path = input("Inserisci il percorso del file di input: ")
+    output_file_path = input("Inserisci il percorso del fil di output: ")
+
+    convert_to_pdf(input_file_path, output_file_path)
+
+menu()
+
