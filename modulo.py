@@ -34,6 +34,7 @@ def menu():
         print("19 - Tavola numerica: quadrati perfetti")
         print("20 - Converti file in PDF")
         print("21 - Operazioni con le liste")
+        print("22 - Lista quadrati")
 
         print("0 - Esci")
 
@@ -87,6 +88,8 @@ def menu():
             file_in_pdf()
         elif scelta == "21":
             lista()
+        elif scelta == "22":
+            lista_quadrati()
         elif scelta == "0":
             break
         else:
@@ -755,6 +758,53 @@ def lista():
         popped = lista.pop()
         print(lista)
 
+def lista_spesa():
+    print("LISTA DELLA SPESA")
+    print("Scrivi la tua lista della spesa")
+    
+    elemento = ""
+    lista_spesa = []
+    while elemento != "fine":
+        elemento = input("Inserisci un elemento nella lista (\"digita 'fine' per terminare\"): ")
+        if elemento != "fine":
+         lista_spesa.append(elemento)
+    
+    print()
+    print("Lista della spesa:")
+    print(lista_spesa)
+    print()
+
+    print("Ordina in ordine alfabetico crescente: lista.sort()")
+    lista_spesa.sort()
+    print(lista_spesa)
+    print()
+
+def lista_quadrati():
+    print("QUADRATI DI UNA LISTA DI NUMERI")
+    print("Calcola il quadrato di una lista di numeri dati: squares = [x**2 for x in lista]")
+    print()
+
+    elemento = ""
+    lista = []
+    while elemento != "fine":
+        elemento = input("Inserisci un numero nella lista (\"digita 'fine' per terminare\"): ")
+        if elemento != "fine":
+         lista.append(elemento)
+    
+    print()
+    print("Lista di numeri:")
+    print(lista)
+    print()
+
+    indice = 0
+    for elemento in lista:
+        elemento = int(elemento)
+        lista[indice] = elemento
+        indice = indice + 1
+
+    squares = [x**2 for x in lista]
+    print("Lista quadrati: ")
+    print(squares)
 
 
 menu()
