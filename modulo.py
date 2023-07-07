@@ -1,9 +1,10 @@
 import math
-import numbers
-import inspect
+#import numbers
+#import inspect
 import sys
 import datetime
 import pdfkit
+import random
 #from tee import Tee
 
 import matplotlib.pyplot as plt
@@ -837,12 +838,25 @@ def lista_pari_dispari():
     print(pari)
     print()
 
-   input( "Premi INVIO")
+    input( "Premi INVIO")
     dispari = [x for x in lista if x%2 != 0]
     print("Dispari:")
     print(dispari)
     print()
 
+def numeri_random():
+    print("GENERATOR DI NUMERI CASUALI")
+    print()
+    numero_minimo = input("Inserisci nuemro minimo: ")
+    numero_massimo = input("Inserisci numero massimo: ")
+    ammesse_ripetizioni = input("Ammesser ripetizioni? Si 's', No 'n': ")
+    totale_numeri = input("Inserisci i numeri da restituire: ")
+    print()
 
+    for numero in range(totale_numeri):
+        random_num = random.random()
+        print(random_num)
+
+#numeri_random()
 ###############################
 menu()
