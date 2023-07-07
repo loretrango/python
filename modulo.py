@@ -869,7 +869,10 @@ def numeri_random():
 
     print(numeri)
 
-
+    i = 1
+    for numero in numeri:
+        print(i,numero)
+        i = i+1
 
 ###############################
 menu()
