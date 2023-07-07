@@ -37,6 +37,7 @@ def menu():
         print("21 - Operazioni con le liste")
         print("22 - Lista quadrati")
         print("23 - Lista pari dispari")
+        print("24 - Generatore di numeri casuali")
 
         print("0 - Esci")
 
@@ -94,6 +95,8 @@ def menu():
             lista_quadrati()
         elif scelta == "23":
             lista_pari_dispari()
+        elif scelta == "24":
+            numeri_random()
         elif scelta == "0":
             break
         else:
@@ -847,16 +850,26 @@ def lista_pari_dispari():
 def numeri_random():
     print("GENERATOR DI NUMERI CASUALI")
     print()
-    numero_minimo = input("Inserisci nuemro minimo: ")
-    numero_massimo = input("Inserisci numero massimo: ")
+    numero_minimo = int(input("Inserisci nuemro minimo: "))
+    numero_massimo = int(input("Inserisci numero massimo: "))
     ammesse_ripetizioni = input("Ammesser ripetizioni? Si 's', No 'n': ")
-    totale_numeri = input("Inserisci i numeri da restituire: ")
+    if ammesse_ripetizioni == "n":
+        totale_max_ammesso = numero_massimo - numero_minimo + 1
+        totale_numeri = int(input("Numeri da restituire, massimo " + str(totale_max_ammesso) + ": "))
+        while totale_numeri > totale_max_ammesso:
+            totale_numeri = int(input("Inserisci di nuovo!!\nNumeri da restituire, massimo " + str(totale_max_ammesso) + ": "))
+    elif ammesse_ripetizioni == "s":
+        totale_numeri = int(input("Numeri da restituire: "))
     print()
 
-    for numero in range(totale_numeri):
-        random_num = random.random()
-        print(random_num)
+    if ammesse_ripetizioni == "n":
+        numeri = random.sample(range(numero_minimo, numero_massimo+1), totale_numeri)
+    elif ammesse_ripetizioni == "s":
+        numeri = random.choices(range(numero_minimo, numero_massimo+1), k=totale_numeri)
 
-#numeri_random()
+    print(numeri)
+
+
+
 ###############################
 menu()
