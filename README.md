@@ -1,3 +1,3 @@
 # Python_codice
-programma di prova per imparare Python
-Esegue alcune righe di codice contenti semplici operazioni matematiche.
+Programma di prova per imparare Python
+Contiene alcune funzioni relativa a matematica, test di programmazione in generale.
