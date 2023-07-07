@@ -184,16 +184,15 @@ def calcola_parallelepipedo():
     altezza=float(input("Inserisci l'altezza: "))
     print()
 
-
     perimetro_base=2*larghezza+2*profondita
     print("Perimetro di base: ",perimetro_base)
     print()
 
     print("Altre aree laterali:")
     prof_per_alt= profondita*altezza
-    print("Profondità per altezza: ",prof_per_alt)
+    print("Profondità x altezza: ",prof_per_alt)
     larg_per_alt= larghezza*altezza
-    print("Larghezza per altezza: ",larg_per_alt)
+    print("Larghezza x altezza: ",larg_per_alt)
 
     print()
     area_base=larghezza*profondita
@@ -203,6 +202,9 @@ def calcola_parallelepipedo():
     area_totale=area_base+area_laterale
     print("Area totale: \t", area_totale)
     print()
+
+    lunghezza_spigoli = larghezza*4 + profondita*4 + altezza*4
+    print("Lunghezza complessiva di tutti gli spigoli: ", lunghezza_spigoli)
 ##############
 
 def calcola_cilindro():
