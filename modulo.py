@@ -199,7 +199,7 @@ def calcola_parallelepipedo():
     print("Area di base: \t",area_base)
     area_laterale=perimetro_base*altezza
     print("Area laterale: \t", area_laterale)
-    area_totale=area_base+area_laterale
+    area_totale=2*area_base+area_laterale
     print("Area totale: \t", area_totale)
     print()
 
