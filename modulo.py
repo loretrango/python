@@ -42,6 +42,7 @@ def menu():
         print("23 - Lista pari dispari")
         print("24 - Generatore di numeri casuali")
         print("25 - Calcola parallelepipedo GUI")
+        print("26 - Insiemi random - operazioni tra insiemi")
 
         print("0 - Esci")
 
@@ -103,6 +104,8 @@ def menu():
             numeri_random()
         elif scelta == "25":
             apri_finestra()
+        elif scelta == "26":
+            insiemi_random()
         elif scelta == "0":
             break
         else:
@@ -959,7 +962,45 @@ def apri_finestra():
     # Run the GUI main loop
     window.mainloop()
 
+def insiemi_random():
+    print("INSIEMI RANDOM")
 
+    totale_numeri = int(input("Inserisci la lunghezza degli insiemi: "))
+    minimo = int(input("Valore minimo: "))
+    massimo = int(input("Valore massimo: "))
+
+    a = random.sample(range(minimo, massimo), totale_numeri)
+    b = random.sample(range(minimo, massimo), totale_numeri)
+    a = set(a)
+    b = set(b)
+    print("a = ", a)
+    print("b = ", b)
+
+    insiemi_operazioni(a,b)
+
+def insiemi_operazioni(a,b):
+    print("OPERAZIONI TRA DUE INSIEMI")
+    print()
+    print("INTERSEZIONE a&b, a \u2229 b:")
+    input()
+    print(a&b)
+    
+    print()
+    print("UNIONE a|b, a \u222a b: ")
+    input()
+    print(a|b)
+    
+    print()
+    print("DIFFERENZA a-b: ")
+    input()
+    print(a-b)
+    
+    print()
+    print("ELEMENTI NON IN COMUNE a^b: ")
+    input()
+    print(a^b)
+
+    
 
 ###############################
 menu()
