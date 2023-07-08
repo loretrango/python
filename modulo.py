@@ -1036,7 +1036,7 @@ def somme_random():
                 contatore = contatore + 1
                 break
             else:
-                risposta = input("Risposta sbagiata, riprova: ")
+                risposta = input("ERRORE, riprova: ")
                 contatore = contatore + 1
 
             print("contatore: ",contatore)
@@ -1047,8 +1047,13 @@ def somme_random():
         numero_domande = numero_domande + 1
         print()
     
-    print("Domande: ",numero_domande-2)
-    print("Risposte esatte: ", risposte_esatte-2)
+    totale_domande = numero_domande-2
+    totale_risposte_esatte = risposte_esatte-2
+    totale_percentuale_esatte = totale_risposte_esatte/totale_domande*100
+    print("Domande: ",totale_domande)
+    
+    print("Risposte esatte: ", totale_risposte_esatte)
+    print("Percentuale esatte: ",totale_percentuale_esatte, "%")
 
 """     risultato = eval(str(a) + selected_operator + str(b))
         print(str(a) + selected_operator + str(b) + " = ", end='')
