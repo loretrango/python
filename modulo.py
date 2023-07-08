@@ -43,6 +43,7 @@ def menu():
         print("24 - Generatore di numeri casuali")
         print("25 - Calcola parallelepipedo GUI")
         print("26 - Insiemi random - operazioni tra insiemi")
+        print("27 - Somme random")
 
         print("0 - Esci")
 
@@ -106,6 +107,8 @@ def menu():
             apri_finestra()
         elif scelta == "26":
             insiemi_random()
+        elif scelta == "27":
+            somme_random()
         elif scelta == "0":
             break
         else:
@@ -1000,7 +1003,37 @@ def insiemi_operazioni(a,b):
     input()
     print(a^b)
 
+    #return a,b
+
+def somme_random():
+    print("SOMME RANDOM")
+
+    risposta = ""
+    massimo_a = int(input("Massimo valore del primo addendo 'a': "))
+    massimo_b = int(input("Massimo valore del secondo addendo 'b': "))
+    print()
     
+    while risposta != "fine":
+        operators = ['+', '-', '*', '/']
+        selected_operator = random.choice(operators)
+        
+        a = random.randint(a=0, b=massimo_a)
+        b = random.randint(a=0, b=massimo_b)
+        risultato = a + b
+
+        print(str(a) + " + " + str(b) + " = ", end='')
+        risposta = input("")
+
+        
+        while int(risposta) != risultato:
+            risposta = input("Risposta sbagiata, riprova: ")
+        
+        print()
+
+"""         risultato = eval(str(a) + selected_operator + str(b))
+        print(str(a) + selected_operator + str(b) + " = ", end='')
+        input()
+        print(risultato) """
 
 ###############################
 menu()
