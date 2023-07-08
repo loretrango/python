@@ -43,7 +43,7 @@ def menu():
         print("24 - Generatore di numeri casuali")
         print("25 - Calcola parallelepipedo GUI")
         print("26 - Insiemi random - operazioni tra insiemi")
-        print("27 - Somme random")
+        print("27 - Addizioni random (numero di cifre)")
 
         print("0 - Esci")
 
@@ -1006,13 +1006,16 @@ def insiemi_operazioni(a,b):
     #return a,b
 
 def somme_random():
-    print("SOMME RANDOM")
+    print("ADDIZIONI RANDOM")
 
     risposta = ""
     massimo_a = int(input("Massimo valore del primo addendo 'a': "))
     massimo_b = int(input("Massimo valore del secondo addendo 'b': "))
     print()
     
+    risposte_esatte = 0
+    numero_domande = 1
+
     while risposta != "fine":
         operators = ['+', '-', '*', '/']
         selected_operator = random.choice(operators)
@@ -1021,16 +1024,33 @@ def somme_random():
         b = random.randint(a=0, b=massimo_b)
         risultato = a + b
 
+        print("Digita il risultato corretto o 'fine' per terminare")
+
+        print("ES: ",numero_domande)
         print(str(a) + " + " + str(b) + " = ", end='')
         risposta = input("")
+        
+        contatore = 0
+        while risposta != str(risultato):
+            if risposta =="fine":
+                contatore = contatore + 1
+                break
+            else:
+                risposta = input("Risposta sbagiata, riprova: ")
+                contatore = contatore + 1
 
+            print("contatore: ",contatore)
         
-        while int(risposta) != risultato:
-            risposta = input("Risposta sbagiata, riprova: ")
+        if contatore < 2:
+            risposte_esatte = risposte_esatte + 1
         
+        numero_domande = numero_domande + 1
         print()
+    
+    print("Domande: ",numero_domande-2)
+    print("Risposte esatte: ", risposte_esatte-2)
 
-"""         risultato = eval(str(a) + selected_operator + str(b))
+"""     risultato = eval(str(a) + selected_operator + str(b))
         print(str(a) + selected_operator + str(b) + " = ", end='')
         input()
         print(risultato) """
