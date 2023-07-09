@@ -1005,8 +1005,19 @@ def insiemi_operazioni(a,b):
 
     #return a,b
 
+
 ## Chat GPT version
-""" def somme_random():
+ 
+def generate_addition_problem(max_value1, max_value2):
+    addend1 = random.randint(0, max_value1)
+    addend2 = random.randint(0, max_value2)
+    return addend1, addend2
+
+def check_answer(addend1, addend2, answer):
+    expected_result = addend1 + addend2
+    return answer == str(expected_result)
+
+def somme_randomp_gpt():
     print("ADDIZIONI RANDOM")
 
     max_value1 = int(input("Massimo valore del primo addendo 'a': "))
@@ -1040,7 +1051,9 @@ def insiemi_operazioni(a,b):
 
     print("Domande:", total_questions)
     print("Risposte esatte:", correct_answers)
-    print("Percentuale esatte:", percentage_correct, "%") """
+    print("Percentuale esatte:", percentage_correct, "%")
+
+########################### fine chat gpt
 
 
 def somme_random():
@@ -1066,7 +1079,7 @@ def somme_random():
 
         print("ES: ",numero_domande + 1)
         print("Digita il risultato corretto o 'fine' per terminare")
-        print(str(a) + " + " + str(b) + " = ", end='')
+        print(f"{a} + {b} = ", end='')
         risposta = input("")
 
         if risposta == "fine":
