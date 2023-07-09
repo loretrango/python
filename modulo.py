@@ -1,17 +1,16 @@
 import math
-#import numbers
-#import inspect
 import sys
 import datetime
 import pdfkit
 import random
 import tkinter as tk
-#from tee import Tee
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+#from tee import Tee
+#import numbers
+#import inspect
 
 #### MENU
 def menu():
@@ -43,7 +42,7 @@ def menu():
         print("24 - Generatore di numeri casuali")
         print("25 - Calcola parallelepipedo GUI")
         print("26 - Insiemi random - operazioni tra insiemi")
-        print("27 - Addizioni random (numero di cifre)")
+        print("27 - Addizioni random (numero di cifre, punteggio, ...)")
 
         print("0 - Esci")
 
