@@ -1064,9 +1064,8 @@ def somme_random():
         b = random.randint(a=0, b=massimo_b)
         risultato = a + b
 
+        print("ES: ",numero_domande + 1)
         print("Digita il risultato corretto o 'fine' per terminare")
-        print("ES: ",contatore)
-
         print(str(a) + " + " + str(b) + " = ", end='')
         risposta = input("")
 
@@ -1075,10 +1074,12 @@ def somme_random():
             contatore = 0       
             
         elif risposta == str(risultato):
+            print("Corretto!!")
             esito = "corretto"
             contatore = 1
 
         else:
+            tentativi = 1
             while risposta != str(risultato):
                 if risposta == "fine":
                     esito = "errato"
@@ -1088,7 +1089,12 @@ def somme_random():
                     risposta = input("Errato: ")
                     esito = "errato"
                     contatore = 1
+                    tentativi = tentativi + 1
+            
+            if risposta == str(risultato):
+                print("Corretto, dopo ",tentativi, "tentativi")
         
+        print()
         if esito == "corretto":
             risposte_esatte = risposte_esatte + 1
         numero_domande = numero_domande + contatore
