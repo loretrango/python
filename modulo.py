@@ -1005,6 +1005,44 @@ def insiemi_operazioni(a,b):
 
     #return a,b
 
+## Chat GPT version
+""" def somme_random():
+    print("ADDIZIONI RANDOM")
+
+    max_value1 = int(input("Massimo valore del primo addendo 'a': "))
+    max_value2 = int(input("Massimo valore del secondo addendo 'b': "))
+    print()
+
+    correct_answers = 0
+    total_questions = 0
+
+    while True:
+        addend1, addend2 = generate_addition_problem(max_value1, max_value2)
+        result = addend1 + addend2
+
+        print("Digita il risultato corretto o 'fine' per terminare")
+        print("ES:", total_questions + 1)
+        print(f"{addend1} + {addend2} = ", end='')
+        answer = input()
+
+        if answer == "fine":
+            break
+
+        if check_answer(addend1, addend2, answer):
+            print("Corretto!")
+            correct_answers += 1
+        else:
+            print("Errato! Il risultato corretto era", result)
+
+        total_questions += 1
+
+    percentage_correct = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+
+    print("Domande:", total_questions)
+    print("Risposte esatte:", correct_answers)
+    print("Percentuale esatte:", percentage_correct, "%") """
+
+
 def somme_random():
     print("ADDIZIONI RANDOM")
 
@@ -1014,7 +1052,9 @@ def somme_random():
     print()
     
     risposte_esatte = 0
-    numero_domande = 1
+    numero_domande = 0
+    contatore = 1
+    esito = ""
 
     while risposta != "fine":
         operators = ['+', '-', '*', '/']
@@ -1025,40 +1065,42 @@ def somme_random():
         risultato = a + b
 
         print("Digita il risultato corretto o 'fine' per terminare")
+        print("ES: ",contatore)
 
-        print("ES: ",numero_domande)
         print(str(a) + " + " + str(b) + " = ", end='')
         risposta = input("")
-        
-        contatore = 0
-        while risposta != str(risultato):
-            if risposta =="fine":
-                contatore = contatore + 1
-                break
-            else:
-                risposta = input("ERRORE, riprova: ")
-                contatore = contatore + 1
 
-            print("contatore: ",contatore)
+        if risposta == "fine":
+            esito = "errato"
+            contatore = 0       
+            
+        elif risposta == str(risultato):
+            esito = "corretto"
+            contatore = 1
+
+        else:
+            while risposta != str(risultato):
+                if risposta == "fine":
+                    esito = "errato"
+                    contatore = 0
+                
+                else:
+                    risposta = input("Errato: ")
+                    esito = "errato"
+                    contatore = 1
         
-        if contatore < 2:
+        if esito == "corretto":
             risposte_esatte = risposte_esatte + 1
-        
-        numero_domande = numero_domande + 1
-        print()
+        numero_domande = numero_domande + contatore
+        percentuale_corrette = risposte_esatte / numero_domande * 100
     
-    totale_domande = numero_domande-2
-    totale_risposte_esatte = risposte_esatte-2
-    totale_percentuale_esatte = totale_risposte_esatte/totale_domande*100
-    print("Domande: ",totale_domande)
-    
-    print("Risposte esatte: ", totale_risposte_esatte)
-    print("Percentuale esatte: ",totale_percentuale_esatte, "%")
 
-"""     risultato = eval(str(a) + selected_operator + str(b))
-        print(str(a) + selected_operator + str(b) + " = ", end='')
-        input()
-        print(risultato) """
+    print("Domande: ",numero_domande)
+    
+    print("Risposte esatte: ", risposte_esatte)
+    print("Percentuale esatte: ",percentuale_corrette, "%")
+
+
 
 ###############################
 menu()
