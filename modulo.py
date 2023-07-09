@@ -1092,6 +1092,7 @@ def somme_random():
 
         else:
             tentativi = 1
+
             while risposta != str(risultato):
                 if risposta == "fine":
                     esito = "errato"
@@ -1107,16 +1108,17 @@ def somme_random():
                 print("Corretto, dopo ",tentativi, "tentativi")
         
         print()
+
         if esito == "corretto":
             risposte_esatte = risposte_esatte + 1
+
         numero_domande = numero_domande + contatore
         percentuale_corrette = risposte_esatte / numero_domande * 100
-    
 
-    print("Domande: ",numero_domande)
+    print("Domande: ", numero_domande)
     
     print("Risposte esatte: ", risposte_esatte)
-    print("Percentuale esatte: ",percentuale_corrette, "%")
+    print("Percentuale esatte: ", percentuale_corrette, "%")
 
 
 
