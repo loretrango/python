@@ -646,7 +646,8 @@ def tavola_numerica_tee():
 def tavola_numerica_quad_perf():
     ## scrive su schermo
     print("TAVOLA NUMERICA - Quadrati perfetti")
-    print("Stampa i quadrati perfetti della tavola numerica a video e sul file tavola_numerica_quad_perf.txt")
+    print("Stampa i quadrati perfetti della tavola numerica a video \
+          e sul file tavola_numerica_quad_perf.txt")
     minimo = int(input("Inserisci numero minimo: "))
     n = int(input("Inserisci numero massimo: "))
 
@@ -870,7 +871,8 @@ def numeri_random():
         totale_max_ammesso = numero_massimo - numero_minimo + 1
         totale_numeri = int(input("Numeri da restituire, massimo " + str(totale_max_ammesso) + ": "))
         while totale_numeri > totale_max_ammesso:
-            totale_numeri = int(input("Inserisci di nuovo!!\nNumeri da restituire, massimo " + str(totale_max_ammesso) + ": "))
+            totale_numeri = int(input("Inserisci di nuovo!!\nNumeri da restituire, massimo " \
+                                      + str(totale_max_ammesso) + ": "))
     elif ammesse_ripetizioni == "s":
         totale_numeri = int(input("Numeri da restituire: "))
     print()
@@ -1099,10 +1101,14 @@ def somme_random():
                     contatore = 0
                 
                 else:
-                    risposta = input("Errato: ")
-                    esito = "errato"
-                    contatore = 1
-                    tentativi = tentativi + 1
+                    while risposta != "salta" and risposta !=str(risultato) and risposta != "fine":
+                        risposta = input("ERRATO, ritenta \
+                                         \no digita 'salta' per andare aventi,\
+                                         \n 'fine' per terminare: ")
+                        esito = "errato"
+                        contatore = 1
+                        tentativi = tentativi + 1
+                    break
             
             if risposta == str(risultato):
                 print("Corretto, dopo ",tentativi, "tentativi")
@@ -1118,9 +1124,7 @@ def somme_random():
     print("Domande: ", numero_domande)
     
     print("Risposte esatte: ", risposte_esatte)
-    print("Percentuale esatte: ", percentuale_corrette, "%")
-
-
+    print("Percentuale esatte: ", round(percentuale_corrette, 2), "%")
 
 ###############################
 menu()
