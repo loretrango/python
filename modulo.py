@@ -1068,6 +1068,7 @@ def somme_random():
     risposte_esatte = 0
     numero_domande = 0
     contatore = 1
+
     esito = ""
 
     while risposta != "fine":
