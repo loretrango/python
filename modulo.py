@@ -1078,11 +1078,13 @@ def somme_random():
     prima_risposta = ""
 
     lista_domande = []
+    lista_tempi_es = []
 
     tempo_inizio = datetime.datetime.today()
     print(f"Orario inizio: {tempo_inizio}")
 
     while risposta != "fine":
+        tempo_inizio_es = datetime.datetime.today()
         operators = ['+', '-', '*', '/']
         selected_operator = random.choice(operators)
         
@@ -1100,6 +1102,7 @@ def somme_random():
             contatore = 0       
             
         elif risposta == str(risultato):
+            tempo_fine_es = datetime.datetime.today()
             print("Corretto!!")
             esito = "corretto"
             contatore = 1
@@ -1123,12 +1126,19 @@ def somme_random():
                         esito = "errato"
                         contatore = 1
                         tentativi = tentativi + 1
+                        tempo_fine_es = datetime.datetime.today()
                     break
             
             if risposta == str(risultato):
                 print("Corretto, dopo ",tentativi, "tentativi")
+                tempo_fine_es = datetime.datetime.today()
         
         print()
+
+        ## tempi singolo es:
+        tempo_impiegato_es = tempo_fine_es - tempo_inizio_es
+        
+        lista_tempi_es.append(tempo_impiegato_es)
 
         if esito == "corretto":
             risposte_esatte = risposte_esatte + 1
@@ -1144,8 +1154,10 @@ def somme_random():
             print("REPORT esiti:")
             print()
             
+            i = 0
             for elemento in lista_domande:
-                print(elemento)
+                print(f"{elemento}, tempo impiegato: {lista_tempi_es[i]}")
+                i = i+1
             print()
 
             # Candidato
@@ -1153,12 +1165,21 @@ def somme_random():
 
             ## Report
             # Tempi
-            tempo_impiegato = tempo_fine - tempo_inizio
             tempo_fine = datetime.datetime.today()
+            tempo_impiegato = tempo_fine - tempo_inizio
+            media_tempo_impiegato = 0
+            somma_tempi_es = ""
+
+
+
+            
             print(f"Orario inizio: {tempo_inizio}")
             print(f"Orario fine: {tempo_fine}")
             print(f"Tempo impiegato: {tempo_impiegato}")
+            print(f"Media tempo impiegato, singolo es.: {media_tempo_impiegato}")
+
             print()
+            
 
             #Statistiche domande
 

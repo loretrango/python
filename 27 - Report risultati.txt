@@ -62,3 +62,50 @@ Tempo impiegato: 0:00:19.823591
 Domande:  13
 Risposte esatte:  12
 Percentuale esatte:  92.31 %
+
+REPORT esiti:
+
+ES.1: 1 + 1 = 2 
+ corretto: la prima risposta è stata 2, tempo: 0:00:01.684424
+ES.2: 1 + 1 = 2 
+ corretto: la prima risposta è stata 2, tempo: 0:00:02.446375
+ES.3: 0 + 0 = 0 
+ corretto: la prima risposta è stata 0, tempo: 0:00:01.362816
+ES.4: 0 + 0 = 0 
+ corretto: la prima risposta è stata 0, tempo: 0:00:01.245779
+ES.5: 2 + 2 = 4 
+ corretto: la prima risposta è stata 4, tempo: 0:00:01.319162
+ES.6: 2 + 2 = 4 
+ errato: la prima risposta è stata 4, tempo: 0:00:02.382298
+ES.7: 0 + 0 = 0 
+ corretto: la prima risposta è stata 0, tempo: 0:00:01.347281
+ES.7: 2 + 1 = 3 
+ errato: la prima risposta è stata 0, tempo: -1 day, 23:59:59.999933
+
+Candidato: ddddd
+
+Orario inizio: 2023-07-11 22:16:56.180688
+Orario fine: 2023-07-11 22:17:11.569396
+Tempo impiegato: 0:00:15.388708
+
+Domande:  7
+Risposte esatte:  6
+Percentuale esatte:  85.71 %
+
+REPORT esiti:
+
+ES.1: 1 + 0 = 1 
+ errato: la prima risposta è stata , tempo impiegato: 0:00:04.765521
+ES.2: 2 + 1 = 3 
+ errato: la prima risposta è stata , tempo impiegato: 0:00:04.156070
+
+Candidato: dfdfgdfg
+
+Orario inizio: 2023-07-11 22:31:25.631111
+Orario fine: 2023-07-11 22:31:34.553305
+Tempo impiegato: 0:00:08.922194
+Media tempo impiegato, singolo es.: 0
+
+Domande:  2
+Risposte esatte:  0
+Percentuale esatte:  0.0 %
