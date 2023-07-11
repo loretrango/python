@@ -1059,17 +1059,28 @@ def somme_randomp_gpt():
 
 def somme_random():
     print("ADDIZIONI RANDOM")
+    print("Verifica e stampa i risultati sotto forma di \
+          report nel file '27 - Report risultati'")
 
     risposta = ""
+
+    nome = input("Inserisci il tuo nome: ")
+
     massimo_a = int(input("Massimo valore del primo addendo 'a': "))
     massimo_b = int(input("Massimo valore del secondo addendo 'b': "))
     print()
-    
+
     risposte_esatte = 0
     numero_domande = 0
     contatore = 1
 
     esito = ""
+    prima_risposta = ""
+
+    lista_domande = []
+
+    tempo_inizio = datetime.datetime.today()
+    print(f"Orario inizio: {tempo_inizio}")
 
     while risposta != "fine":
         operators = ['+', '-', '*', '/']
@@ -1092,6 +1103,7 @@ def somme_random():
             print("Corretto!!")
             esito = "corretto"
             contatore = 1
+            prima_risposta = risposta
 
         else:
             tentativi = 1
@@ -1100,6 +1112,8 @@ def somme_random():
                 if risposta == "fine":
                     esito = "errato"
                     contatore = 0
+                    prima_risposta = risposta
+
                 
                 else:
                     while risposta != "salta" and risposta !=str(risultato) and risposta != "fine":
@@ -1121,11 +1135,44 @@ def somme_random():
 
         numero_domande = numero_domande + contatore
         percentuale_corrette = risposte_esatte / numero_domande * 100
+        ## aggiunge operazione alla lista domande
+        lista_domande.append(f"ES.{numero_domande}: {a} + {b} = {risultato} \n {esito}: la prima risposta è stata {prima_risposta}")
 
-    print("Domande: ", numero_domande)
-    
-    print("Risposte esatte: ", risposte_esatte)
-    print("Percentuale esatte: ", round(percentuale_corrette, 2), "%")
+    print()
+    def esiti():
+            print()
+            print("REPORT esiti:")
+            print()
+            
+            for elemento in lista_domande:
+                print(elemento)
+            print()
+
+            # Candidato
+            print(f"Candidato: {nome}\n")
+
+            ## Report
+            # Tempi
+            tempo_impiegato = tempo_fine - tempo_inizio
+            tempo_fine = datetime.datetime.today()
+            print(f"Orario inizio: {tempo_inizio}")
+            print(f"Orario fine: {tempo_fine}")
+            print(f"Tempo impiegato: {tempo_impiegato}")
+            print()
+
+            #Statistiche domande
+
+            print("Domande: ", numero_domande)
+            print("Risposte esatte: ", risposte_esatte)
+            print("Percentuale esatte: ", round(percentuale_corrette, 2), "%")
+
+    esiti()
+    with open("27 - Report risultati.txt", "a") as file:
+        ## stampa la lista domande
+        sys.stdout = file
+        esiti()
+        # ripristina il normale output
+        sys.stdout = sys.__stdout__ 
 
 ###############################
 menu()
