@@ -1060,25 +1060,37 @@ def somme_random():
     print("Verifica e stampa i risultati sotto forma di \
           report nel file '27 - Report risultati'")
 
-    risposta = ""
+    
 
     nome = input("Inserisci il tuo nome: ")
 
-    massimo_a = int(input("Massimo valore del primo addendo 'a': "))
-    massimo_b = int(input("Massimo valore del secondo addendo 'b': "))
+    # gestione delle eccezioni nelle cifre degli addendi:
+    while True:
+        try:
+            massimo_a = int(input("Massimo valore del primo addendo 'a': "))
+            break
+        except ValueError:
+            print("Oops! Non è un valore numerico valido. Ritenta ...")
+
+    while True:
+        try:
+            massimo_b = int(input("Massimo valore del secondo addendo 'b': "))
+            break
+        except ValueError:
+            print("Oops! Non è un valore numerico valido. Ritenta ...")
     print()
 
+    # inizializzazione variabili
     risposte_esatte = 0
     numero_domande = 0
     contatore = 1
-
     esito = ""
     prima_risposta = ""
-
+    risposta = ""
     lista_domande = []
     lista_tempi_es = []
-
     tempo_inizio = datetime.datetime.today()
+
     print(f"Orario inizio: {tempo_inizio}")
 
     while risposta != "fine":
@@ -1153,7 +1165,6 @@ def somme_random():
             print()
             print("REPORT esiti:")
             tempo_fine = datetime.datetime.today()
-
             print(f"Orario di fine: {tempo_fine}")
             print()
             
