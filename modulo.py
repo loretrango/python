@@ -1152,8 +1152,12 @@ def somme_random():
 
     print()
     def esiti():
+            print("---------------------------------------------------------")
             print()
             print("REPORT esiti:")
+            tempo_fine = datetime.datetime.today()
+
+            print(f"Orario di fine: {tempo_fine}")
             print()
             
             i = 0
