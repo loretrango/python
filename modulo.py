@@ -1143,9 +1143,11 @@ def somme_random():
         if esito == "corretto":
             risposte_esatte = risposte_esatte + 1
 
+        # Aggiornamento contatori
         numero_domande = numero_domande + contatore
         percentuale_corrette = risposte_esatte / numero_domande * 100
-        ## aggiunge operazione alla lista domande
+        
+        # aggiunge operazione alla lista domande
         lista_domande.append(f"ES.{numero_domande}: {a} + {b} = {risultato} \n {esito}: la prima risposta è stata {prima_risposta}")
 
     print()
@@ -1167,22 +1169,14 @@ def somme_random():
             # Tempi
             tempo_fine = datetime.datetime.today()
             tempo_impiegato = tempo_fine - tempo_inizio
-            media_tempo_impiegato = 0
-            somma_tempi_es = ""
-
-
-
-            
+            media_tempo_impiegato = tempo_impiegato / numero_domande
             print(f"Orario inizio: {tempo_inizio}")
             print(f"Orario fine: {tempo_fine}")
             print(f"Tempo impiegato: {tempo_impiegato}")
             print(f"Media tempo impiegato, singolo es.: {media_tempo_impiegato}")
-
             print()
-            
 
-            #Statistiche domande
-
+            # Report Statistiche domande
             print("Domande: ", numero_domande)
             print("Risposte esatte: ", risposte_esatte)
             print("Percentuale esatte: ", round(percentuale_corrette, 2), "%")
