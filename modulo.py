@@ -1006,7 +1006,6 @@ def insiemi_operazioni(a,b):
 
     #return a,b
 
-
 ## Chat GPT version
  
 def generate_addition_problem(max_value1, max_value2):
@@ -1055,7 +1054,6 @@ def somme_randomp_gpt():
     print("Percentuale esatte:", percentage_correct, "%")
 
 ########################### fine chat gpt
-
 
 def somme_random():
     print("ADDIZIONI RANDOM")
@@ -1117,7 +1115,6 @@ def somme_random():
                     contatore = 0
                     prima_risposta = risposta
 
-                
                 else:
                     while risposta != "salta" and risposta !=str(risultato) and risposta != "fine":
                         risposta = input("ERRATO, ritenta \
