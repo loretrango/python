@@ -109,3 +109,33 @@ Media tempo impiegato, singolo es.: 0
 Domande:  2
 Risposte esatte:  0
 Percentuale esatte:  0.0 %
+
+REPORT esiti:
+
+ES.1: 2 + 1 = 3 
+ corretto: la prima risposta è stata 3, tempo impiegato: 0:00:01.634744
+ES.2: 1 + 0 = 1 
+ corretto: la prima risposta è stata 1, tempo impiegato: 0:00:01.041521
+ES.3: 2 + 1 = 3 
+ errato: la prima risposta è stata 1, tempo impiegato: 0:00:03.190316
+ES.4: 0 + 2 = 2 
+ corretto: la prima risposta è stata 2, tempo impiegato: 0:00:01.104407
+ES.5: 2 + 1 = 3 
+ corretto: la prima risposta è stata 3, tempo impiegato: 0:00:01.088947
+ES.6: 1 + 0 = 1 
+ corretto: la prima risposta è stata 1, tempo impiegato: 0:00:00.980564
+ES.7: 0 + 1 = 1 
+ corretto: la prima risposta è stata 1, tempo impiegato: 0:00:01.130159
+ES.8: 0 + 0 = 0 
+ errato: la prima risposta è stata 1, tempo impiegato: 0:00:03.224945
+
+Candidato: lolo
+
+Orario inizio: 2023-07-12 15:17:29.704771
+Orario fine: 2023-07-12 15:17:43.101311
+Tempo impiegato: 0:00:13.396540
+Media tempo impiegato, singolo es.: 0:00:01.674568
+
+Domande:  8
+Risposte esatte:  6
+Percentuale esatte:  75.0 %
