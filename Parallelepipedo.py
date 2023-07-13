@@ -19,5 +19,6 @@ class Parallelepipedo:
         print(area)
         return area
     
-    def chi_sei(self):
-        print(f"Sono un parallelepipedo di {self.lar}x{self.pro}x{self.alt}")
+    
+    def __str__(self):
+        return f"Parallelepipedo(lar={self.lar}, pro={self.pro}, alt={self.alt})"

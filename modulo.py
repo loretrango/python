@@ -1219,6 +1219,8 @@ def parallelepipedo_classe():
 
     print(par1.lar / par2.lar)
 
+    print(par1)
+
 parallelepipedo_classe()
 
 ###############################
