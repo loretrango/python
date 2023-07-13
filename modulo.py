@@ -4,6 +4,7 @@ import datetime
 import pdfkit
 import random
 import tkinter as tk
+from Parallelepipedo import Parallelepipedo
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -1201,5 +1202,26 @@ def somme_random():
         # ripristina il normale output
         sys.stdout = sys.__stdout__ 
 
+def parallelepipedo_classe():
+    print("PARALLELEPIPEDO (Classe e oggetti)")
+
+    par1 = Parallelepipedo(int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
+
+    par1.area_base()
+    par1.area_laterale()
+    par1.calcola_volume()
+
+    par2 = Parallelepipedo(int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
+
+    par2.area_base()
+    par2.area_laterale()
+    par2.calcola_volume()
+
+    print(par1.lar / par2.lar)
+
+parallelepipedo_classe()
+
 ###############################
+
+
 menu()

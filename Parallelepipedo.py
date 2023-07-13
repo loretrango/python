@@ -22,12 +22,9 @@ class Parallelepipedo:
     def chi_sei(self):
         print(f"Sono un parallelepipedo di {self.lar}x{self.pro}x{self.alt}")
 
-par1 = Parallelepipedo(int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
-""" par1.calcola_volume()
-par1.area_base() """
+""" par1 = Parallelepipedo(int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
 
 par2 = Parallelepipedo(int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
-
 
 volume = par1.calcola_volume()
 print(volume)
@@ -38,4 +35,4 @@ print(area)
 par1.chi_sei()
 
 rapporto_larghezze = par1.lar / par2.lar
-print(rapporto_larghezze) 
+print(rapporto_larghezze)  """
