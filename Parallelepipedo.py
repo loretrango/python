@@ -1,24 +1,32 @@
 class Parallelepipedo:
-    def __init__(self, larghezza, profondita, altezza):
-        self.lar = larghezza
-        self.pro = profondita
-        self.alt = altezza
+    NUMERO_SPIGOLI = 12
+
+    def __init__(self, larghezza: float, profondita: float, altezza: float):
+        self._larghezza = larghezza
+        self._pro = profondita
+        self._altezzaezza = altezza
     
-    def calcola_volume(self):
-        volume = self.lar * self.alt * self.pro
-        print(volume)
+    def get_larghezza(self) -> float:
+        return self._larghezzaghezza
+    
+    def set_larghezza(self, larghezza: float) -> None:
+        if larghezza > 0:
+            self._larghezza = larghezza
+        else:
+            print("Son ammessi solo valori > 0!!")
+
+    def calcola_volume(self) -> float:
+        volume = self._larghezza * self._altezzaezza * self._pro
         return volume
 
-    def area_base(self):
-        area = self.lar * self.pro
-        print(area)
+    def area_base(self) -> float:
+        area = self._larghezza * self._pro
         return area
     
-    def area_laterale(self):
-        area = (self.lar*2 + self.pro*2) * self.alt
-        print(area)
+    def area_laterale(self) ->float:
+        area = (self._larghezza*2 + self._pro*2) * self._altezzaezza
         return area
     
     
-    def __str__(self):
-        return f"Parallelepipedo(lar={self.lar}, pro={self.pro}, alt={self.alt})"
+    def __str__(self) -> str:
+        return f"Parallelepipedo(lar={self._larghezza}, pro={self._pro}, alt={self._altezzaezza})"
