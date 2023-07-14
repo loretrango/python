@@ -218,3 +218,5 @@ Media tempo impiegato, singolo es.: 0:00:01.744802
 Domande:  10
 Risposte esatte:  8
 Percentuale esatte:  80.0 %
+
+bau
