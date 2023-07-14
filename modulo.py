@@ -421,7 +421,8 @@ def potenza():
 ## esponenziale
 def esponenziale():
     print("ESPONENZIALE")
-    print("Calcola la potenza di un numero 'a', \ncon un esponente che va da '0' fino a 'n'")
+    print("Calcola la potenza di un numero 'a', \n\
+          con un esponente che va da '0' fino a 'n'")
     n = int(input("Inserisci un numero intero del massimo esponente: "))
     a = int(input("Inserisci numero intero \"a\" della base: "))
     
@@ -450,7 +451,8 @@ def calcola_quadrato():
 
 def serie_gauss():
     print("SERIE DI GAUSS")
-    n = int(input("Inserisci un numero del quale vuoi calcolare la serie di Gauss: "))
+    n = int(input("Inserisci un numero del quale \
+                  vuoi calcolare la serie di Gauss: "))
 
     minimo = 0
     serie_n = 0
@@ -585,12 +587,17 @@ def tavola_numerica():
                 
 ## Output su file
 def tavola_numerica_stdout():
-    n = int(input("Inserisci fino a quale numero 'n' vuoi calcolare la tavola periodica: "))
+    n = int(input("Inserisci fino a quale numero 'n' \
+                  vuoi calcolare la tavola periodica: "))
 
     with open('tavola_sys.txt', 'w') as f:
         sys.stdout = f
 
-        print("n" + "\t" + "n^2" + "\t\t" + "n^3" + "\t\t" + "rad_quad(n)" + "\t\t" + "rad_cub(n)")
+        print("n" + "\t" 
+              + "n^2" + "\t\t" 
+              + "n^3" + "\t\t" 
+              + "rad_quad(n)" + "\t\t" 
+              + "rad_cub(n)")
         print("----------------------------------------------------------------")
 
         for i in range(n + 1):
@@ -609,7 +616,8 @@ def tavola_numerica_stdout():
     
 ## output multipli (ci sono errori da correggere)
 def tavola_numerica_tee():
-    n = int(input("Inserisci fino a quale numero 'n' vuoi calcolare la tavola periodica: "))
+    n = int(input("Inserisci fino a quale numero 'n' \
+                  vuoi calcolare la tavola periodica: "))
 
     with open('tavola_sys.txt', 'w') as f:
 
@@ -755,7 +763,8 @@ def lista():
     print(lista)
     print()
 
-    print("Cancella un elemento con un dato indice: del lista[indice_elemento] ")
+    print("Cancella un elemento con un dato indice: \
+          del lista[indice_elemento] ")
     indice_elemento = int(input("Indice elemento: "))
     del lista[indice_elemento]
     print(lista)
@@ -775,7 +784,8 @@ def lista():
     print(lista)
     print()
 
-    print("Rimuove l'usltimo elemento e ritorna la lista con l'elemento rimosso: lista.pop()")
+    print("Rimuove l'usltimo elemento e ritorna la lista \
+          con l'elemento rimosso: lista.pop()")
     for pop in range(len(lista)):
         popped = lista.pop()
         print(lista)
@@ -787,7 +797,8 @@ def lista_spesa():
     elemento = ""
     lista_spesa = []
     while elemento != "fine":
-        elemento = input("Inserisci un elemento nella lista (\"digita 'fine' per terminare\"): ")
+        elemento = input("Inserisci un elemento nella lista \
+                         (\"digita 'fine' per terminare\"): ")
         if elemento != "fine":
          lista_spesa.append(elemento)
     
@@ -803,13 +814,15 @@ def lista_spesa():
 
 def lista_quadrati():
     print("QUADRATI DI UNA LISTA DI NUMERI")
-    print("Calcola il quadrato di una lista di numeri dati: squares = [x**2 for x in lista]")
+    print("Calcola il quadrato di una lista di numeri dati: \
+          squares = [x**2 for x in lista]")
     print()
 
     elemento = ""
     lista = []
     while elemento != "fine":
-        elemento = input("Inserisci un numero nella lista (\"digita 'fine' per terminare\"): ")
+        elemento = input("Inserisci un numero nella lista  \
+                         (\"digita 'fine' per terminare\"): ")
         if elemento != "fine":
          lista.append(elemento)
     
@@ -830,12 +843,14 @@ def lista_quadrati():
 
 def lista_pari_dispari():
     print("LISTA PARI DISPARI")
-    print("Data una lista di numeri, \nrestituisce una lista di quelli PARI e una lista di quelli DISPARI")
+    print("Data una lista di numeri, \nrestituisce una lista di quelli PARI \
+           e una lista di quelli DISPARI")
 
     elemento = ""
     lista = []
     while elemento != "fine":
-        elemento = input("Inserisci un numero nella lista (\"digita 'fine' per terminare\"): ")
+        elemento = input("Inserisci un numero nella lista \
+                         (\"digita 'fine' per terminare\"): ")
         if elemento != "fine":
             lista.append(elemento)
     
@@ -870,18 +885,24 @@ def numeri_random():
     ammesse_ripetizioni = input("Ammesse ripetizioni? Si 's', No 'n': ")
     if ammesse_ripetizioni == "n":
         totale_max_ammesso = numero_massimo - numero_minimo + 1
-        totale_numeri = int(input("Numeri da restituire, massimo " + str(totale_max_ammesso) + ": "))
+        totale_numeri = int(input("Numeri da restituire, massimo " 
+                                  + str(totale_max_ammesso) + ": "))
         while totale_numeri > totale_max_ammesso:
-            totale_numeri = int(input("Inserisci di nuovo!!\nNumeri da restituire, massimo " \
+            totale_numeri = int(input("Inserisci di nuovo!!\n\
+                                      Numeri da restituire, massimo " \
                                       + str(totale_max_ammesso) + ": "))
     elif ammesse_ripetizioni == "s":
         totale_numeri = int(input("Numeri da restituire: "))
     print()
 
     if ammesse_ripetizioni == "n":
-        numeri = random.sample(range(numero_minimo, numero_massimo+1), totale_numeri)
+        numeri = random.sample(range(numero_minimo, 
+                                     numero_massimo+1), 
+                                     totale_numeri)
     elif ammesse_ripetizioni == "s":
-        numeri = random.choices(range(numero_minimo, numero_massimo+1), k=totale_numeri)
+        numeri = random.choices(range(numero_minimo, 
+                                      numero_massimo+1), 
+                                      k=totale_numeri)
 
     print(numeri)
 
@@ -942,7 +963,9 @@ def apri_finestra():
     entry_altezza.pack()
 
     # Create a button
-    button_calculate = tk.Button(window, text="Calculate", command=calcola_parallelepipedo_gui)
+    button_calculate = tk.Button(window, 
+                                 text="Calculate", 
+                                 command=calcola_parallelepipedo_gui)
     button_calculate.pack()
 
     # Create result labels
@@ -1048,7 +1071,8 @@ def somme_randomp_gpt():
 
         total_questions += 1
 
-    percentage_correct = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+    percentage_correct = (correct_answers / total_questions) \
+                        * 100 if total_questions > 0 else 0
 
     print("Domande:", total_questions)
     print("Risposte esatte:", correct_answers)
@@ -1129,7 +1153,9 @@ def somme_random():
                     prima_risposta = risposta
 
                 else:
-                    while risposta != "salta" and risposta !=str(risultato) and risposta != "fine":
+                    while risposta != "salta" \
+                    and risposta !=str(risultato) \
+                    and risposta != "fine":
                         risposta = input("ERRATO, ritenta \
                                          \no digita 'salta' per andare aventi,\
                                          \n 'fine' per terminare: ")
@@ -1158,7 +1184,8 @@ def somme_random():
         percentuale_corrette = risposte_esatte / numero_domande * 100
         
         # aggiunge operazione alla lista domande
-        lista_domande.append(f"ES.{numero_domande}: {a} + {b} = {risultato} \n {esito}: la prima risposta è stata {prima_risposta}")
+        lista_domande.append(f"ES.{numero_domande}: {a} + {b} = {risultato} \n\
+                              {esito}: la prima risposta è stata {prima_risposta}")
 
     print()
     def esiti():
@@ -1206,7 +1233,9 @@ def parallelepipedo_classe():
     print("PARALLELEPIPEDO (Classe e oggetti)")
 
     par1 = Parallelepipedo_retto(1,2,3)
-    # (int(input("larghezza: ")), int(input("Profondità: ")), int(input("Altezza: ")))
+    # (int(input("larghezza: ")), 
+    # int(input("Profondità: ")), 
+    # int(input("Altezza: ")))
 
     par1.area_base()
     par1.area_laterale()
