@@ -1,10 +1,19 @@
-class Parallelepipedo:
+""" class Prallelepipedo:
+
+    def __init__(self, larghezza, profondita, altezza):
+        self._larghezza = larghezza
+        self._profonndita = profondita
+        self._altezza = altezza
+ """
+
+
+class Parallelepipedo_retto:
     NUMERO_SPIGOLI = 12
     NUMERO_VERTICI = 8
 
-    def __init__(self, larghezza: float, altezza: float, altezza: float):
+    def __init__(self, larghezza: float, profondita: float, altezza: float):
         self._larghezza = larghezza
-        self._profonndita = profondita
+        self._profondita = profondita
         self._altezza = altezza
    
     # get e set
@@ -22,7 +31,7 @@ class Parallelepipedo:
     def get_profondita(self) -> float:
         return self.get_profondita
 
-     def set_profondita (self, profondita: float) -> None:
+    def set_profondita (self, profondita: float) -> None:
         if profondita > 0:
             self._profondita = profondita
         else:
@@ -32,7 +41,7 @@ class Parallelepipedo:
     def get_altezza(self) -> float:
         return self.get_altezza
 
-     def set_altezza (self, altezza: float) -> None:
+    def set_altezza (self, altezza: float) -> None:
         if altezza > 0:
             self._altezza = altezza
         else:
@@ -58,4 +67,4 @@ class Parallelepipedo:
 
     # metodo __str__
     def __str__(self) -> str:
-        return f"Parallelepipedo(lar={self._larghezza}, pro={self._pro}, alt={self._altezza})"
+        return f"Parallelepipedo_retto(lar={self._larghezza}, pro={self._profondita}, alt={self._altezza})"
