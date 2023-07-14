@@ -4,7 +4,7 @@ import datetime
 import pdfkit
 import random
 import tkinter as tk
-from Parallelepipedo import Parallelepipedo_retto
+from Solidi import Parallelepipedo_retto
 
 import matplotlib.pyplot as plt
 import numpy as np
