@@ -4,7 +4,7 @@ import datetime
 import pdfkit
 import random
 import tkinter as tk
-from Solidi import Parallelepipedo_retto
+from Solidi import ParallelepipedoRetto
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -496,6 +496,7 @@ def stampa_su_file():
         # print("This is another line.", file=file)
         # print("And another one.", file=file)
 
+
 def ripeti_frase():
     print("RIPETI FRASE")
     print("Ripete e scrive su un file (output.txt) una frase data")
@@ -526,6 +527,30 @@ def scatter_plot():
     plt.colorbar()
     plt.show() 
 
+def tavola_numerica_gpt():
+    print("TAVOLA NUMERICA")
+    print("Stampa la tavola numerica a video e sul file tavola_numerica.txt")
+    minimo = int(input("Inserisci numero minimo: "))
+    n = int(input("Inserisci numero massimo: "))
+
+    table_rows = []
+    table_rows.append("n\t\tn^2\t\t\tn^3\t\t\trad_quad(n)\t\trad_cub(n)")
+    table_rows.append("---------------------------------------------------------------------------")
+
+    for i in range(minimo, n + 1):
+        n_quadrato = i ** 2
+        n_cubo = i ** 3
+        n_radquad = round(math.sqrt(i), 4)
+        n_radcub = round(i ** (1 / 3), 4)
+
+        row = f"{i}\t\t{n_quadrato}\t\t{n_cubo}\t\t{n_radquad}\t\t{n_radcub}"
+        table_rows.append(row)
+
+    table = "\n".join(table_rows)
+    print(table)
+
+
+
 def tavola_numerica():
     ## scrive su schermo
     print("TAVOLA NUMERICA")
@@ -541,7 +566,7 @@ def tavola_numerica():
     print("---------------------------------------------------------------------------")
 
     i = 0
-
+    file_origine = "tavola_numerica.txt"
     for i in range(minimo, n+1):
         n_quadrato = i**2
         n_cubo = i**3
@@ -555,8 +580,10 @@ def tavola_numerica():
               + "\t\t\t" + str(n_radcub))
         i=i+1
 
+
         ## Scrive la tavola su un file
-        with open("tavola_numerica.txt", "w") as file:
+        
+        with open(file_origine, "w") as file:
             i = 0
 
             intestazione = ("n" 
@@ -584,7 +611,9 @@ def tavola_numerica():
                 file.write("\n")
 
                 i=i+1
-                
+            
+    convert_to_pdf(file_origine)
+
 ## Output su file
 def tavola_numerica_stdout():
     n = int(input("Inserisci fino a quale numero 'n' \
@@ -606,11 +635,13 @@ def tavola_numerica_stdout():
             n_radquad = round(math.sqrt(i), 4)
             n_radcub = round(i ** (1 / 3), 4)
 
-            print(str(i) 
-                  + "\t" + str(n_quadrato) 
-                  + "\t\t" + str(n_cubo) 
-                  + "\t\t" + str(n_radquad).ljust(13) 
-                  + "\t\t\t" + str(n_radcub))
+            print('{0:2d}{1:3d}{2:4d}{3:5d}{4:6d}'.format(i,n_quadrato,n_cubo,n_radquad,n_radcub))
+            
+            # print(str(i) 
+            #       + "\t" + str(n_quadrato) 
+            #       + "\t\t" + str(n_cubo) 
+            #       + "\t\t" + str(n_radquad).ljust(13) 
+            #       + "\t\t\t" + str(n_radcub))
         
         sys.stdout = sys.__stdout__ ## ripristina il normale output
     
@@ -730,6 +761,11 @@ def file_in_pdf():
     output_file_path = input("Inserisci il percorso del fil di output: ")
 
     convert_to_pdf(input_file_path, output_file_path)
+
+
+def convert_to_pdf(file):
+    pdfkit.from_file(file, f"{file}.pdf")
+
 
 def lista():
     print("Operazioni con le liste")
@@ -1232,7 +1268,7 @@ def somme_random():
 def parallelepipedo_classe():
     print("PARALLELEPIPEDO (Classe e oggetti)")
 
-    par1 = Parallelepipedo_retto(1,2,3)
+    par1 = ParallelepipedoRetto(1,2,3)
     # (int(input("larghezza: ")), 
     # int(input("Profondità: ")), 
     # int(input("Altezza: ")))
@@ -1241,7 +1277,7 @@ def parallelepipedo_classe():
     par1.area_laterale()
     par1.calcola_volume()
 
-    par2 = Parallelepipedo_retto(2,3,4)
+    par2 = ParallelepipedoRetto(2,3,4)
 
     par2.area_base()
     par2.area_laterale()
@@ -1251,13 +1287,30 @@ def parallelepipedo_classe():
 
     print(par1)
 
-    print(Parallelepipedo_retto.NUMERO_SPIGOLI)
+    print(ParallelepipedoRetto.NUMERO_SPIGOLI)
 
     par1.set_larghezza(-12.5)
     print(par1._larghezza)
 
 
-parallelepipedo_classe()
+## Temperatura computer
+import psutil
+
+def get_cpu_temperature():
+    temperature = psutil.sensors_temperatures()
+    if "coretemp" in temperature:
+        # Assuming coretemp provides per-core temperature
+        core_temps = temperature["coretemp"]
+        for temp in core_temps:
+            # Print the temperature of each core
+            print(f"Core {temp.label}: {temp.current}°C")
+    else:
+        print("CPU temperature information not available.")
+
+get_cpu_temperature()
+
+
+#parallelepipedo_classe()
 
 ###############################
 

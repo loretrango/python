@@ -90,19 +90,19 @@ class ParallelepipedoRetto(Parallelepipedo):
         return f"Parallelepipedo_retto(lar={self._larghezza}, pro={self._profondita}, alt={self._altezza})"
     
 
-par1 = ParallelepipedoRetto(2,4,5)
-print(par1.__str__())
-print("Volume", par1.calcola_volume())
-print("Area di base", par1.area_base())
+# par1 = ParallelepipedoRetto(2,4,5)
+# print(par1.__str__())
+# print("Volume", par1.calcola_volume())
+# print("Area di base", par1.area_base())
 
-print("par_nonRetto")
-par_nonRetto = Parallelepipedo(2,4,5,"")
-print(par_nonRetto._altezza)
-print("Volume", par_nonRetto.calcola_volume())
-print("Area_base", par_nonRetto._area_base)
-print("Area base", par_nonRetto.area_base())
-print("Area_base", par_nonRetto._area_base)
+# print("par_nonRetto")
+# par_nonRetto = Parallelepipedo(2,4,5,"")
+# print(par_nonRetto._altezza)
+# print("Volume", par_nonRetto.calcola_volume())
+# print("Area_base", par_nonRetto._area_base)
+# print("Area base", par_nonRetto.area_base())
+# print("Area_base", par_nonRetto._area_base)
 
-print("Prisma")
-prisma = Prisma(altezza=2, area_base=10)
-print(prisma._volume)
+# print("Prisma")
+# prisma = Prisma(altezza=2, area_base=10)
+# print(prisma._volume)
