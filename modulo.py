@@ -4,10 +4,15 @@ import datetime
 import pdfkit
 import random
 import tkinter as tk
-from Solidi import ParallelepipedoRetto
+import time
 
 import matplotlib.pyplot as plt
 import numpy as np
+import psutil #PC temperature
+
+from Solidi import ParallelepipedoRetto
+
+
 
 #from tee import Tee
 #import numbers
@@ -44,6 +49,8 @@ def menu():
         print("25 - Calcola parallelepipedo GUI")
         print("26 - Insiemi random - operazioni tra insiemi")
         print("27 - Addizioni random (numero di cifre, punteggio, ...)")
+        print("28 - Temperatura PC")     
+        print("29 - Temperatura PC - grafico real time")
 
         print("0 - Esci")
 
@@ -109,6 +116,10 @@ def menu():
             insiemi_random()
         elif scelta == "27":
             somme_random()
+        elif scelta == "28":
+            get_cpu_temperature()
+        elif scelta == "29":
+            real_time_cpu_temp()
         elif scelta == "0":
             break
         else:
@@ -1294,23 +1305,78 @@ def parallelepipedo_classe():
 
 
 ## Temperatura computer
-import psutil
-
 def get_cpu_temperature():
-    temperature = psutil.sensors_temperatures()
-    if "coretemp" in temperature:
-        # Assuming coretemp provides per-core temperature
-        core_temps = temperature["coretemp"]
-        for temp in core_temps:
-            # Print the temperature of each core
-            print(f"Core {temp.label}: {temp.current}°C")
-    else:
-        print("CPU temperature information not available.")
+    while True:
+        temperature = psutil.sensors_temperatures()
 
-get_cpu_temperature()
+    
+        if "coretemp" in temperature:
+            # Assuming coretemp provides per-core temperature
+            core_temps = temperature["coretemp"]
+            for temp in core_temps:
+                # Print the temperature of each core
+                print(f"Core {temp.label}: {temp.current}°C")
+        else:
+            print("CPU temperature information not available.")
+    time.sleep(1)
+
+def real_time_cpu_temp():
+    # Set the maximum number of data points to display in the real-time diagram
+    max_data_points = 1000
+
+    # Initialize lists to store timestamps and temperature values
+    timestamps = []
+    temperatures = []
+
+    # Create a figure and axes for the plot
+    fig, ax = plt.subplots()
+
+    # Set the axis labels
+    ax.set_xlabel('Time')
+    ax.set_ylabel('Temperature (°C)')
+
+    # Set the plot title
+    ax.set_title('Real-Time Temperature - Core 0')
+
+    # Create an empty line object for the plot
+    line, = ax.plot(timestamps, temperatures)
+
+    # Set the y-axis limits
+    ax.set_ylim(0, 100)  # Modify the limits according to your temperature range
+
+    # Function to update the plot with new temperature data
+    def update_plot():
+        # Retrieve the temperature for core 0
+        temperature = psutil.sensors_temperatures()['coretemp'][1].current
+
+        # Append the current timestamp and temperature to the lists
+        timestamps.append(len(timestamps))
+        temperatures.append(temperature)
+
+        # Keep only the last 'max_data_points' data points
+        if len(timestamps) > max_data_points:
+            timestamps.pop(0)
+            temperatures.pop(0)
+
+        # Update the plot data
+        line.set_data(timestamps, temperatures)
+
+        # Adjust the x-axis limits to fit the data
+        ax.set_xlim(0, max(timestamps) + 1)
+
+        # Redraw the plot
+        fig.canvas.draw()
+
+    # Call the update_plot() function periodically to update the plot
+    timer = fig.canvas.new_timer(interval=1000)  # Update the plot every second (adjust as needed)
+    timer.add_callback(update_plot)
+    timer.start()
+
+    # Display the plot
+    plt.show()
 
 
-#parallelepipedo_classe()
+
 
 ###############################
 
