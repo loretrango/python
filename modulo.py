@@ -39,7 +39,7 @@ def menu():
         print("15 - Stampa su file")
         print("16 - Ripeti frase")
         print("17 - Scatter plot (grafico)")
-        print("18 - Tavola numerica")
+        print("18 - Tavola numerica (LENTO: usa #30)")
         print("19 - Tavola numerica: quadrati perfetti")
         print("20 - Converti file in PDF")
         print("21 - Operazioni con le liste")
@@ -51,6 +51,7 @@ def menu():
         print("27 - Addizioni random (numero di cifre, punteggio, ...)")
         print("28 - Temperatura PC")     
         print("29 - Temperatura PC - grafico real time")
+        print("30 - Tavola numerica CGPT")
 
         print("0 - Esci")
 
@@ -120,6 +121,8 @@ def menu():
             get_cpu_temperature()
         elif scelta == "29":
             real_time_cpu_temp()
+        elif scelta == "30":
+            tavola_numerica_gpt()
         elif scelta == "0":
             break
         else:
@@ -545,7 +548,7 @@ def tavola_numerica_gpt():
     n = int(input("Inserisci numero massimo: "))
 
     table_rows = []
-    table_rows.append("n\t\tn^2\t\t\tn^3\t\t\trad_quad(n)\t\trad_cub(n)")
+    table_rows.append(f"{'n':<10}{'n^2':<10}{'n^3':<15}{'rad_quad(n)':<15}{'rad_cub(n)':<15}")
     table_rows.append("---------------------------------------------------------------------------")
 
     for i in range(minimo, n + 1):
@@ -554,13 +557,19 @@ def tavola_numerica_gpt():
         n_radquad = round(math.sqrt(i), 4)
         n_radcub = round(i ** (1 / 3), 4)
 
-        row = f"{i}\t\t{n_quadrato}\t\t{n_cubo}\t\t{n_radquad}\t\t{n_radcub}"
+        row = f"{i:<10}{n_quadrato:<10}{n_cubo:<15}{n_radquad:<15}{n_radcub:<15}"
         table_rows.append(row)
 
     table = "\n".join(table_rows)
     print(table)
 
+    nome_file = "tavola_numerica.txt"
+    with open(nome_file, "w") as file:
+        sys.stdout = file
+        print(table)
+        sys.stdout = sys.__stdout__ ## ripristina il normale output
 
+    convert_to_pdf(nome_file)
 
 def tavola_numerica():
     ## scrive su schermo
