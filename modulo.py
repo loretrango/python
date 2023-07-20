@@ -51,7 +51,7 @@ def menu():
         print("27 - Addizioni random (numero di cifre, punteggio, ...)")
         print("28 - Temperatura PC")     
         print("29 - Temperatura PC - grafico real time")
-        print("30 - Tavola numerica CGPT")
+        print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
 
         print("0 - Esci")
 
@@ -544,11 +544,48 @@ def scatter_plot():
 def tavola_numerica_gpt():
     print("TAVOLA NUMERICA")
     print("Stampa la tavola numerica a video e sul file tavola_numerica.txt")
-    minimo = int(input("Inserisci numero minimo: "))
-    n = int(input("Inserisci numero massimo: "))
+ 
+    while True:
+        try:
+            minimo = int(input("Inserisci un numero minimo della tavola: "))
+            break
+        except ValueError:
+            print("Oops! Non è un valore numerico")
+
+    while True:
+        try:
+            n = int(input("Inserisci un numero massimo della tavola: "))
+            while n<minimo:
+                while True:
+                    try:
+                        n = int(input(f"Inserisci un numero massimo della tavola, >= {minimo}: "))
+                        break
+                    except ValueError:
+                        print("Oops! Non è un valore numerico")
+            break
+        except ValueError:
+            print("Oops! Non è un valore numerico")
+
+
+    n = int(input("Inserisci un numero massimo della tavola: "))
+    while n<minimo:
+        n = int(input(f"Inserisci un numero massimo della tavola, >= {minimo}: "))
+    
+
+    # Lunghezza massima stringhe
+    len_n = len(str(n)) + 3
+    len_n2 = len(str(n**2)) + 3
+    len_n3 = len(str(n**3)) + 3
+    len_radq = len(str(round(math.sqrt(n), 4))) + 3
+    if len_radq < 12:
+        len_radq = 12
+    len_radc = len(str(round(n ** (1 / 3), 4))) + 3
+    if len_radc < 12:
+        len_radc = 12
+    print(len_n,len_n2,len_n3,len_radq,len_radc)
 
     table_rows = []
-    table_rows.append(f"{'n':<10}{'n^2':<10}{'n^3':<15}{'rad_quad(n)':<15}{'rad_cub(n)':<15}")
+    table_rows.append(f"{'n ':<{len_n}}{'n^2 ':<{len_n2}}{'n^3 ':<{len_n3}}{'rad_quad(n) ':<{len_radq}}{'rad_cub(n) ':<{len_radc}}")
     table_rows.append("---------------------------------------------------------------------------")
 
     for i in range(minimo, n + 1):
@@ -557,13 +594,15 @@ def tavola_numerica_gpt():
         n_radquad = round(math.sqrt(i), 4)
         n_radcub = round(i ** (1 / 3), 4)
 
-        row = f"{i:<10}{n_quadrato:<10}{n_cubo:<15}{n_radquad:<15}{n_radcub:<15}"
+        row = f"{i:<{len_n}}{n_quadrato:<{len_n2}}{n_cubo:<{len_n3}}{n_radquad:<{len_radq}}{n_radcub:<{len_radc}}"
         table_rows.append(row)
 
     table = "\n".join(table_rows)
+    
     print(table)
 
     nome_file = "tavola_numerica.txt"
+    print("Printing txt file. Wait...")
     with open(nome_file, "w") as file:
         sys.stdout = file
         print(table)
@@ -784,7 +823,18 @@ def file_in_pdf():
 
 
 def convert_to_pdf(file):
-    pdfkit.from_file(file, f"{file}.pdf")
+    output_file = f"{file}.pdf"
+
+    # Get the number of pages in the file (optional but useful for progress indication)
+    page_count = pdfkit.from_file(file, output_file, options={'quiet': ''})
+
+    # Print "Wait..." while the conversion is in progress
+    print("Converting to PDF. Wait...Ci vuole pazienza")
+    
+    # Convert the file to PDF
+    pdfkit.from_file(file, output_file, options={'quiet': ''})
+
+    print(f"Conversion completed. PDF saved to {output_file}")
 
 
 def lista():
