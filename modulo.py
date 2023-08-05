@@ -552,24 +552,21 @@ def tavola_numerica_gpt():
         except ValueError:
             print("Oops! Non è un valore numerico")
 
+    # Valuta massimo
     while True:
         try:
             n = int(input("Inserisci un numero massimo della tavola: "))
-            while n<minimo:
-                while True:
+            
+            while n < minimo:
                     try:
                         n = int(input(f"Inserisci un numero massimo della tavola, >= {minimo}: "))
-                        break
                     except ValueError:
                         print("Oops! Non è un valore numerico")
             break
+
         except ValueError:
             print("Oops! Non è un valore numerico")
 
-
-    n = int(input("Inserisci un numero massimo della tavola: "))
-    while n<minimo:
-        n = int(input(f"Inserisci un numero massimo della tavola, >= {minimo}: "))
     
 
     # Lunghezza massima stringhe
