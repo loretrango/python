@@ -52,6 +52,7 @@ def menu():
         print("28 - Temperatura PC")     
         print("29 - Temperatura PC - grafico real time")
         print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
+        print("31 - Divisibility of a number 'n' for a divisor 'divosor'")
 
         print("0 - Esci")
 
@@ -123,6 +124,8 @@ def menu():
             real_time_cpu_temp()
         elif scelta == "30":
             tavola_numerica_gpt()
+        elif scelta == "31":
+            divisibility()
         elif scelta == "0":
             break
         else:
@@ -1431,8 +1434,38 @@ def real_time_cpu_temp():
     # Display the plot
     plt.show()
 
+## Divisibility of a number "n" for a divisor "divosor"  
+def divisibility():
+    print("Divisibility of a number 'n' for a divisor 'divosor' [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]")
+    n = int(input("Number to verify: "))
+    l = [] #lista divisori
 
+    divisors = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    for divisor in divisors:
 
+        if n%divisor == 0:
+            l.append(divisor)
+    
+    print(l)
+
+def factorization():
+    n = int(input("Insert number:"))
+    primes = [2,3,5,7,11,13,17,19,23]
+    factors = []
+    results = []
+    result = n
+    
+    for prime in primes:
+        while result%prime == 0:
+            result = int(result/prime)
+            results.append(result)
+            factors.append(prime)
+    
+    print(factors)
+    print(results)
+            
+
+factorization()
 
 ###############################
 
