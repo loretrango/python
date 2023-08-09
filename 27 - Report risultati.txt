@@ -1,0 +1,140 @@
+---------------------------------------------------------
+
+REPORT esiti:
+Orario di fine: 2023-08-09 20:57:24.572286
+
+ES.1: 3 + 10 = 13 
+                              corretto: la prima risposta è stata 13, tempo impiegato: 0:00:02.921793
+ES.2: 6 + 7 = 13 
+                              corretto: la prima risposta è stata 13, tempo impiegato: 0:00:04.404666
+ES.3: 9 + 3 = 12 
+                              corretto: la prima risposta è stata 12, tempo impiegato: 0:00:02.220805
+ES.4: 4 + 0 = 4 
+                              corretto: la prima risposta è stata 4, tempo impiegato: 0:00:01.639794
+ES.5: 0 + 4 = 4 
+                              corretto: la prima risposta è stata 4, tempo impiegato: 0:00:01.390743
+ES.6: 0 + 9 = 9 
+                              errato: la prima risposta è stata 4, tempo impiegato: 0:00:18.953231
+ES.7: 3 + 9 = 12 
+                              corretto: la prima risposta è stata 12, tempo impiegato: 0:00:06.184470
+ES.8: 1 + 4 = 5 
+                              corretto: la prima risposta è stata 5, tempo impiegato: 0:00:02.002840
+ES.9: 3 + 4 = 7 
+                              corretto: la prima risposta è stata 7, tempo impiegato: 0:00:06.324360
+ES.10: 3 + 7 = 10 
+                              corretto: la prima risposta è stata 10, tempo impiegato: 0:00:04.436149
+ES.10: 10 + 1 = 11 
+                              errato: la prima risposta è stata 10, tempo impiegato: -1 day, 23:59:59.999927
+
+Candidato: Lorenzo
+
+Orario inizio: 2023-08-09 20:56:32.353824
+Orario fine: 2023-08-09 20:57:24.572527
+Tempo impiegato: 0:00:52.218703
+Media tempo impiegato, singolo es.: 0:00:05.221870
+
+Domande:  10
+Risposte esatte:  9
+Percentuale esatte:  90.0 %
+---------------------------------------------------------
+
+REPORT esiti:
+Orario di fine: 2023-08-09 20:59:01.452722
+
+ES.1: 1 + 8 = 9 
+                              corretto: la prima risposta è stata 9, tempo impiegato: 0:00:01.818178
+ES.2: 7 + 6 = 13 
+                              corretto: la prima risposta è stata 13, tempo impiegato: 0:00:03.889875
+ES.3: 10 + 6 = 16 
+                              corretto: la prima risposta è stata 16, tempo impiegato: 0:00:01.901544
+ES.4: 5 + 10 = 15 
+                              corretto: la prima risposta è stata 15, tempo impiegato: 0:00:01.688869
+ES.5: 9 + 7 = 16 
+                              errato: la prima risposta è stata 15, tempo impiegato: 0:00:04.782287
+ES.6: 7 + 0 = 7 
+                              corretto: la prima risposta è stata 7, tempo impiegato: 0:00:02.464094
+ES.7: 7 + 1 = 8 
+                              corretto: la prima risposta è stata 8, tempo impiegato: 0:00:01.483122
+ES.8: 0 + 4 = 4 
+                              corretto: la prima risposta è stata 4, tempo impiegato: 0:00:01.391197
+ES.9: 8 + 7 = 15 
+                              corretto: la prima risposta è stata 15, tempo impiegato: 0:00:04.037186
+ES.10: 3 + 8 = 11 
+                              corretto: la prima risposta è stata 11, tempo impiegato: 0:00:02.588347
+ES.10: 1 + 1 = 2 
+                              errato: la prima risposta è stata 11, tempo impiegato: -1 day, 23:59:59.999868
+
+Candidato: Massimo
+
+Orario inizio: 2023-08-09 20:58:33.247481
+Orario fine: 2023-08-09 20:59:01.452811
+Tempo impiegato: 0:00:28.205330
+Media tempo impiegato, singolo es.: 0:00:02.820533
+
+Domande:  10
+Risposte esatte:  9
+Percentuale esatte:  90.0 %
+---------------------------------------------------------
+
+REPORT esiti:
+Orario di fine: 2023-08-09 21:03:34.927307
+
+ES.1: 0 + 1 = 1 
+                              corretto: la prima risposta è stata 1, tempo impiegato: 0:00:01.538945
+ES.2: 10 + 4 = 14 
+                              errato: la prima risposta è stata 1, tempo impiegato: 0:00:10.041137
+ES.3: 5 + 6 = 11 
+                              corretto: la prima risposta è stata 11, tempo impiegato: 0:00:14.651985
+ES.4: 3 + 7 = 10 
+                              corretto: la prima risposta è stata 10, tempo impiegato: 0:00:01.962091
+ES.5: 1 + 8 = 9 
+                              corretto: la prima risposta è stata 9, tempo impiegato: 0:00:01.518349
+ES.6: 3 + 8 = 11 
+                              corretto: la prima risposta è stata 11, tempo impiegato: 0:00:02.169848
+ES.7: 7 + 9 = 16 
+                              corretto: la prima risposta è stata 16, tempo impiegato: 0:00:03.483180
+ES.8: 3 + 3 = 6 
+                              corretto: la prima risposta è stata 6, tempo impiegato: 0:00:02.317591
+ES.9: 8 + 5 = 13 
+                              corretto: la prima risposta è stata 13, tempo impiegato: 0:00:01.794709
+ES.10: 4 + 9 = 13 
+                              corretto: la prima risposta è stata 13, tempo impiegato: 0:00:03.626951
+ES.10: 1 + 4 = 5 
+                              errato: la prima risposta è stata 13, tempo impiegato: -1 day, 23:59:59.999868
+
+Candidato: Filippo
+
+Orario inizio: 2023-08-09 21:02:48.440969
+Orario fine: 2023-08-09 21:03:34.927495
+Tempo impiegato: 0:00:46.486526
+Media tempo impiegato, singolo es.: 0:00:04.648653
+
+Domande:  10
+Risposte esatte:  9
+Percentuale esatte:  90.0 %
+---------------------------------------------------------
+
+REPORT esiti:
+Candidato: Pippo
+
+Orario di fine: 2023-08-09 21:06:43.557592
+
+ES.1: 2 + 4 = 6 
+                              corretto: la prima risposta è stata 6, tempo impiegato: 0:00:01.902836
+ES.2: 3 + 2 = 5 
+                              corretto: la prima risposta è stata 5, tempo impiegato: 0:00:01.866652
+ES.3: 9 + 6 = 15 
+                              errato: la prima risposta è stata 5, tempo impiegato: 0:00:06.107139
+ES.3: 7 + 3 = 10 
+                              errato: la prima risposta è stata 5, tempo impiegato: -1 day, 23:59:59.999959
+
+Candidato: Pippo
+
+Orario inizio: 2023-08-09 21:06:31.614062
+Orario fine: 2023-08-09 21:06:43.557620
+Tempo impiegato: 0:00:11.943558
+Media tempo impiegato, singolo es.: 0:00:03.981186
+
+Domande:  3
+Risposte esatte:  2
+Percentuale esatte:  66.67 %

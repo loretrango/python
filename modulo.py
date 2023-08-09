@@ -1304,6 +1304,7 @@ def somme_random():
             print("---------------------------------------------------------")
             print()
             print("REPORT esiti:")
+            print(f"Candidato: {nome}\n")
             tempo_fine = datetime.datetime.today()
             print(f"Orario di fine: {tempo_fine}")
             print()
@@ -1313,9 +1314,6 @@ def somme_random():
                 print(f"{elemento}, tempo impiegato: {lista_tempi_es[i]}")
                 i = i+1
             print()
-
-            # Candidato
-            print(f"Candidato: {nome}\n")
 
             ## Report
             # Tempi
@@ -1441,7 +1439,7 @@ def real_time_cpu_temp():
     plt.show()
 
 def verifica_divisibilita():
-    print("Divisibility of a number 'n' for a divisor 'divosor' [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]")
+    print("Divisibility of a number 'n' for a divisor 'divosor'")
     n = int(input("Number to verify: "))
     divisibility(n)
 
