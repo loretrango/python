@@ -54,6 +54,7 @@ def menu():
         print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
         print("31 - Divisibility of a number 'n' for a divisor 'divosor'")
         print("32 - Trova i numeri primi ")
+        print("33 - Verifica se è un numero primo")
 
         print("0 - Esci")
 
@@ -126,9 +127,11 @@ def menu():
         elif scelta == "30":
             tavola_numerica_gpt()
         elif scelta == "31":
-            divisibility()
+            verifica_divisibilita()
         elif scelta == "32":
-            primi()
+            trova_primi()
+        elif scelta == "33":
+            verifica_primo()
         elif scelta == "0":
             break
         else:
@@ -1437,10 +1440,14 @@ def real_time_cpu_temp():
     # Display the plot
     plt.show()
 
-## Divisibility of a number "n" for a divisor "divosor"  
-def divisibility():
+def verifica_divisibilita():
     print("Divisibility of a number 'n' for a divisor 'divosor' [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]")
     n = int(input("Number to verify: "))
+    divisibility(n)
+
+
+## Divisibility of a number "n" for a divisor "divosor"  
+def divisibility(n):
     l = [] #lista divisori
 
     divisors = []
@@ -1491,19 +1498,32 @@ def primo(n):
     else:
         return False
 
-def primi():
+def trova_primi():
     print("TROVA I NUMERI PRIMI DA 2 AL NUMERO 'n' INSERITO")
-    divisori = []
-    primi = []
-
     n = int(input("Inserisci numero: "))
-    contatore = 0
+    primi(n)
+
+def primi(n):
+    print("TROVA I NUMERI PRIMI DA 2 AL NUMERO 'n' INSERITO")
+    primi = []
 
     for numero in range(2,n):
         if primo(numero)==True:
             primi.append(numero)
     
     print(primi)
+
+## verifica se un numero è un numero primo
+print("VERIFICA SE UN NUMERO È UN NUMERO PRIMO")
+def verifica_primo():
+    numero = int(input("Inserisci numero: "))
+    if primo(numero):
+        print("É un numero primo")
+    else:
+        print("Non è un numero primo")
+        print("È divisibile per: ")
+        divisibility(numero)
+
 
 
 ###############################
