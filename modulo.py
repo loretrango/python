@@ -53,6 +53,7 @@ def menu():
         print("29 - Temperatura PC - grafico real time")
         print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
         print("31 - Divisibility of a number 'n' for a divisor 'divosor'")
+        print("32 - Trova i numeri primi ")
 
         print("0 - Esci")
 
@@ -126,6 +127,8 @@ def menu():
             tavola_numerica_gpt()
         elif scelta == "31":
             divisibility()
+        elif scelta == "32":
+            primi()
         elif scelta == "0":
             break
         else:
@@ -1440,7 +1443,13 @@ def divisibility():
     n = int(input("Number to verify: "))
     l = [] #lista divisori
 
-    divisors = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    divisors = []
+    
+    divisor = 1
+    while divisor <= n:
+        divisors.append(divisor)
+        divisor = divisor + 1
+
     for divisor in divisors:
 
         if n%divisor == 0:
@@ -1463,9 +1472,39 @@ def factorization():
     
     print(factors)
     print(results)
-            
 
-factorization()
+
+## verifica se un numero è primo
+def primo(n):
+    divisori = []
+    for divisore in range(2,n):
+        resto = n%divisore
+        if resto == 0:
+            divisori.append(divisore)      
+
+    #print (divisori)
+    len_divisori = len(divisori)
+    #print(len_divisori)
+
+    if len_divisori == 0:
+        return True
+    else:
+        return False
+
+def primi():
+    print("TROVA I NUMERI PRIMI DA 2 AL NUMERO 'n' INSERITO")
+    divisori = []
+    primi = []
+
+    n = int(input("Inserisci numero: "))
+    contatore = 0
+
+    for numero in range(2,n):
+        if primo(numero)==True:
+            primi.append(numero)
+    
+    print(primi)
+
 
 ###############################
 
