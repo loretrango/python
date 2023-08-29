@@ -12,8 +12,6 @@ import psutil #PC temperature
 
 from Solidi import ParallelepipedoRetto
 
-
-
 #from tee import Tee
 #import numbers
 #import inspect
@@ -48,20 +46,21 @@ def menu():
         print("24 - Generatore di numeri casuali")
         print("25 - Calcola parallelepipedo GUI")
         print("26 - Insiemi random - operazioni tra insiemi")
-        print("27 - Addizioni random (numero di cifre, punteggio, ...)")
+        print("27 - Addizioni random (numero di cifre, punteggio, report su file ...)")
         print("28 - Temperatura PC")     
         print("29 - Temperatura PC - grafico real time")
         print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
         print("31 - Divisibility of a number 'n' for a divisor 'divosor'")
         print("32 - Trova i numeri primi ")
         print("33 - Verifica se è un numero primo")
+        print("34 - Scomposizione in fattori primi")
 
         print("0 - Esci")
 
     while True:
         print()
         print("-----------")
-        input("Premi un ENTER per mostrare il MENU: ...")
+        input("Premi ENTER per mostrare il MENU: ...")
         menu_elenco()
         scelta = input("\nFai una scelta: ")
 
@@ -132,6 +131,8 @@ def menu():
             trova_primi()
         elif scelta == "33":
             verifica_primo()
+        elif scelta == "34":
+            factorization()
         elif scelta == "0":
             break
         else:
@@ -955,8 +956,7 @@ def lista_quadrati():
 
 def lista_pari_dispari():
     print("LISTA PARI DISPARI")
-    print("Data una lista di numeri, \nrestituisce una lista di quelli PARI \
-           e una lista di quelli DISPARI")
+    print("Data una lista di numeri, restituisce una lista di quelli PARI e una lista di quelli DISPARI")
 
     elemento = ""
     lista = []
@@ -1459,24 +1459,40 @@ def divisibility(n):
 
         if n%divisor == 0:
             l.append(divisor)
-    
+    return l
     print(l)
 
 def factorization():
-    n = int(input("Insert number:"))
-    primes = [2,3,5,7,11,13,17,19,23]
-    factors = []
-    results = []
-    result = n
-    
-    for prime in primes:
-        while result%prime == 0:
-            result = int(result/prime)
-            results.append(result)
-            factors.append(prime)
-    
-    print(factors)
-    print(results)
+    n = int(input("Inserisci numero: "))
+    fattori = []
+    risultati = [n]
+    risultato = n
+
+    while risultato >1:
+        set_primi = set(primi(risultato))
+        print(set_primi)
+        set_divisori = set(divisibility(risultato))
+        print(set_divisori)
+        intersezione_primi_divisori = set_primi & set_divisori
+        print(intersezione_primi_divisori)
+
+        for divisore in intersezione_primi_divisori:
+            risultato = int(risultato / divisore)
+            risultati.append(risultato)
+            fattori.append(divisore)
+    print(risultati)
+    print(fattori)
+
+    righe_tabella = len((risultati))
+    i = 0
+    for i in range(righe_tabella-1):
+        print(f"{risultati[i]}\t{fattori[i]}")
+    print(f"{risultati[righe_tabella-1]}")
+
+
+
+        
+
 
 
 ## verifica se un numero è primo
@@ -1502,18 +1518,18 @@ def trova_primi():
     primi(n)
 
 def primi(n):
-    print("TROVA I NUMERI PRIMI DA 2 AL NUMERO 'n' INSERITO")
     primi = []
 
     for numero in range(2,n):
         if primo(numero)==True:
             primi.append(numero)
-    
     print(primi)
+    return primi
 
 ## verifica se un numero è un numero primo
-print("VERIFICA SE UN NUMERO È UN NUMERO PRIMO")
+
 def verifica_primo():
+    print("VERIFICA SE UN NUMERO È UN NUMERO PRIMO")
     numero = int(input("Inserisci numero: "))
     if primo(numero):
         print("É un numero primo")
@@ -1522,9 +1538,34 @@ def verifica_primo():
         print("È divisibile per: ")
         divisibility(numero)
 
+def factorize_with_exponents(n):
+    factors = {}
+    divisor = 2
+
+    while n > 1:
+        count = 0
+        while n % divisor == 0:
+            count += 1
+            n //= divisor
+        if count > 0:
+            factors[divisor] = count
+        divisor += 1
+
+    return factors
+
+# Get input from the user
+num = int(input("Enter a number to factorize: "))
+
+# Factorize the number and get prime factors with exponents
+result = factorize_with_exponents(num)
+
+# Display the result
+print(f"The prime factorization of {num} is:")
+for factor, exponent in result.items():
+    print(f"{factor}^{exponent}", end=" ")
+print()
 
 
-###############################
 
-
+##########################
 menu()
