@@ -132,7 +132,7 @@ def menu():
         elif scelta == "33":
             verifica_primo()
         elif scelta == "34":
-            factorization()
+            input_factorization()
         elif scelta == "0":
             break
         else:
@@ -1538,34 +1538,54 @@ def verifica_primo():
         print("È divisibile per: ")
         divisibility(numero)
 
-def factorize_with_exponents(n):
+def factorize_with_exponents(n): # n = 10
     factors = {}
     divisor = 2
+    quozienti = []
 
-    while n > 1:
-        count = 0
-        while n % divisor == 0:
-            count += 1
-            n //= divisor
-        if count > 0:
-            factors[divisor] = count
-        divisor += 1
-
+    while n > 1: # si(10), si(5), 
+        count = 0 # 0
+        while n % divisor == 0: # si,
+            #quozienti.append(n/divisor)
+            count += 1 # 1
+            n //= divisor # 5
+            print(n, end="\t")
+        if count > 0: # si 
+            factors[divisor] = count # {2:1}
+        divisor += 1 # 3
+    #print(quozienti)
     return factors
 
-# Get input from the user
-num = int(input("Enter a number to factorize: "))
+def input_factorization():
+    # Get input from the user
+    num = int(input("Enter a number to factorize: "))
 
-# Factorize the number and get prime factors with exponents
-result = factorize_with_exponents(num)
+    # Factorize the number and get prime factors with exponents
+    result = factorize_with_exponents(num)
 
-# Display the result
-print(f"The prime factorization of {num} is:")
-for factor, exponent in result.items():
-    print(f"{factor}^{exponent}", end=" ")
-print()
+    # Display the result
+    print(f"The prime factorization of {num} is:")
+    for factor, exponent in result.items():
+        print(f"{factor}^{exponent}", end=" ")
+    print()
 
+def input_serie_fact():
+    min = int(input("Inserisci il numero minimo: "))
+    max = int(input("Inserisic il numero massimo: "))
+
+    for num in range(min, max+1):
+        result = factorize_with_exponents(num)
+        # Display the result
+        #print(f"The prime factorization of {num} is:")
+        print(f"{num}", end=" = ")
+        for factor, exponent in result.items():
+            print(f"{factor}^{exponent}", end=" ")
+        print()
+    
 
 
 ##########################
+input_factorization()
+
+input_serie_fact()
 menu()
