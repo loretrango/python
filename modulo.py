@@ -60,12 +60,14 @@ def menu():
     while True:
         print()
         print("-----------")
-        input("Premi ENTER per mostrare il MENU: ...")
+        risposta = input("Premi ENTER per mostrare il MENU")
         menu_elenco()
-        scelta = input("\nFai una scelta: ")
+        scelta = input("\nFai una scelta (premi 'E' per terminare il programma): ")
 
 
-        if scelta == "1":
+        if scelta == "E":
+            exit()
+        elif scelta == "1":
             calcola_cilindro()
         elif scelta == "2":
             calcola_cono()
@@ -975,17 +977,20 @@ def lista_pari_dispari():
     print()
     print("Lista di numeri:")
     print(lista)
+    insieme = set(lista)
+    print(insieme, end=" senza ripetizioni")
+    print()
     print()
 
-    input( "Premi INVIO")
-    pari = [x for x in lista if x % 2 == 0]
-    print("Pari:")
+    input( "Premi INVIO, per vedere i pari")
+    pari = [x for x in insieme if x % 2 == 0]
+    print("PARI:")
     print(pari)
     print()
 
-    input( "Premi INVIO")
-    dispari = [x for x in lista if x%2 != 0]
-    print("Dispari:")
+    input( "Premi INVIO, per vedere i dispari")
+    dispari = [x for x in insieme if x%2 != 0]
+    print("DISPARI:")
     print(dispari)
     print()
 
@@ -1567,6 +1572,7 @@ def input_factorization():
     print(f"The prime factorization of {num} is:")
     for factor, exponent in result.items():
         print(f"{factor}^{exponent}", end=" ")
+
     print()
 
 def input_serie_fact():
@@ -1585,7 +1591,5 @@ def input_serie_fact():
 
 
 ##########################
-input_factorization()
 
-input_serie_fact()
 menu()
