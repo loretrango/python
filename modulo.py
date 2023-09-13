@@ -56,11 +56,12 @@ def menu():
         print("34 - Scomposizione in fattori primi")
 
         print("0 - Esci")
+    
 
     while True:
         print()
         print("-----------")
-        risposta = input("Premi ENTER per mostrare il MENU")
+        input("Premi ENTER per mostrare il MENU")
         menu_elenco()
         scelta = input("\nFai una scelta (premi 'E' per terminare il programma): ")
 
@@ -424,7 +425,7 @@ def fattoriale():
 
     print("n","\t","n!")
     print("-------------------")
-    for i in range(n):
+    for i in range(1,n+1):
 
         print(i,"\t", math.factorial(i))
 
@@ -454,7 +455,7 @@ def esponenziale():
     
     print("n","\t"+str(a)+"^n")
     for i in range(n+1):
-        print(i,"\t", math.pow(a,i))
+        print(i,"\t",a,"^", i ,"\t", math.pow(a,i))
 
 ## funzione di prova per il commit
 def calcola_quadrato():
@@ -1587,9 +1588,32 @@ def input_serie_fact():
         for factor, exponent in result.items():
             print(f"{factor}^{exponent}", end=" ")
         print()
-    
 
+def beautiful_plot(): #chatgpt  
+    # Generate random data
+    np.random.seed(42)
+    x = np.random.rand(50)
+    y = np.random.rand(50)
+    colors = np.random.rand(50)
+    sizes = 1000 * np.random.rand(50)
+
+    # Create a figure with a gradient background
+    fig = plt.figure(figsize=(8, 6))
+    ax = fig.add_subplot(1, 1, 1, facecolor='#f3f3f3')
+    ax.set_facecolor('#f3f3f3')
+
+    # Create the scatter plot
+    scatter = ax.scatter(x, y, c=colors, s=sizes, alpha=0.7, cmap='viridis')
+
+    # Add labels and a colorbar
+    ax.set_xlabel('X-axis')
+    ax.set_ylabel('Y-axis')
+    ax.set_title('Random Beautiful Scatter Plot')
+    cbar = plt.colorbar(scatter)
+    cbar.set_label('Color Intensity')
+
+    # Show the plot
+    plt.show()
 
 ##########################
-
 menu()
