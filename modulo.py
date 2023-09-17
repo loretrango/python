@@ -9,6 +9,7 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import psutil #PC temperature
+from itertools import permutations
 
 from Solidi import ParallelepipedoRetto
 
@@ -54,6 +55,7 @@ def menu():
         print("32 - Trova i numeri primi ")
         print("33 - Verifica se è un numero primo")
         print("34 - Scomposizione in fattori primi")
+        print("35 - Trova le permutazioni")
 
         print("0 - Esci")
     
@@ -136,6 +138,8 @@ def menu():
             verifica_primo()
         elif scelta == "34":
             input_factorization()
+        elif scelta == "35":
+            find_permutations()
         elif scelta == "0":
             break
         else:
@@ -1497,10 +1501,6 @@ def factorization():
 
 
 
-        
-
-
-
 ## verifica se un numero è primo
 def primo(n):
     divisori = []
@@ -1614,6 +1614,44 @@ def beautiful_plot(): #chatgpt
 
     # Show the plot
     plt.show()
+
+
+def permutazioni(input_set):
+    # find and print all permutations
+    permutation_list = list(permutations(input_set))
+
+    for permutation in permutation_list:
+        print(' '.join(permutation)) 
+
+
+def set_constructor():
+    input_list = []
+    n=0
+    while True:
+        list_element = input("Inserisici elemento (o scrivi 'end' per terminare): ")
+        if list_element == "end":
+            break
+        input_list.append(list_element)
+        n += 1
+    
+    input_set = set(input_list)
+
+    print(input_list)
+    print(input_set)
+    return input_set
+
+# nel menu
+def find_permutations():
+    input_set = set_constructor()
+    n = len(input_set)
+    permutations = math.factorial(n)
+    print("Il numero di permutazioni possibili è: ", permutations)
+    permutazioni(input_set)
+    print("Il numero di permutazioni possibili è: ", permutations)
+
+
+
+
 
 ##########################
 menu()
