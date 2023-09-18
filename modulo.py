@@ -444,7 +444,7 @@ def quadrato():
 ## potenza
 def potenza():
     print("POTENZA")
-    n = int(input("Inserisci un numero intero: "))
+    n = int(input("Inserisci un numero intero per la base (calcolerà tutte le potenze da 0 a questo numero): "))
     e = int(input("Inserisci un esponente: "))
     for i in range(n):
         print(i,"\t", math.pow(i,e))
@@ -1500,7 +1500,6 @@ def factorization():
     print(f"{risultati[righe_tabella-1]}")
 
 
-
 ## verifica se un numero è primo
 def primo(n):
     divisori = []
@@ -1636,8 +1635,8 @@ def set_constructor():
     
     input_set = set(input_list)
 
-    print(input_list)
-    print(input_set)
+    print(input_list, len(input_list), "elementi inseriti")
+    print(input_set, len(input_set), "elementi unici inseriti (senza doppioni)")
     return input_set
 
 # nel menu
@@ -1648,9 +1647,6 @@ def find_permutations():
     print("Il numero di permutazioni possibili è: ", permutations)
     permutazioni(input_set)
     print("Il numero di permutazioni possibili è: ", permutations)
-
-
-
 
 
 ##########################
