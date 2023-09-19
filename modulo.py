@@ -173,7 +173,7 @@ def validita_triangolo():
             print("c+a<=b")
         else:
             print("a+b<=c")
-##########################
+
 
 def calcola_pitagora():
     print("PITAGORA")
@@ -1503,15 +1503,17 @@ def factorization():
 ## verifica se un numero è primo
 def primo(n):
     divisori = []
+
+    # trova tutti i divisori maggiori di "1" del numero "n" e li aggiungi alla lista "divisori"
     for divisore in range(2,n):
         resto = n%divisore
         if resto == 0:
             divisori.append(divisore)      
 
-    #print (divisori)
+    # determina la lunghezza della lista "divisori"
     len_divisori = len(divisori)
-    #print(len_divisori)
 
+    # se la lunghezza della lista è 0 allora il numero "n" è un numero primo
     if len_divisori == 0:
         return True
     else:
