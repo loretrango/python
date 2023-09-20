@@ -153,9 +153,9 @@ def validita_triangolo():
     b=input("Lato b: ")
     c=input("Lato c: ")
 
-    a=int(a)
-    b=int(b)
-    c=int(c)
+    a=float(a)
+    b=float(b)
+    c=float(c)
 
     if b+c>a and c+a>b and a+b>c:
         
