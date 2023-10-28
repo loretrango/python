@@ -1,0 +1,254 @@
+//-----------------------
+// Uno degli ultimi, non funziona
+// Function to get a calendar by name
+function getCalendarByName(prova) {
+  var calendars = CalendarApp.getCalendarsByName(prova);
+  if (calendars.length > 0) {
+    return calendars[0];
+  } else {
+    throw new Error('Calendar not found: ' + prova);
+  }
+}
+
+// Function to check if an event already exists in a calendar
+function isEventAlreadyAdded(calendar, newEvent) {
+  var events = calendar.getEvents(newEvent.start.dateTime, newEvent.end.dateTime);
+
+  for (var i = 0; i < events.length; i++) {
+    var existingEvent = events[i];
+    if (
+      existingEvent.getTitle() === newEvent.summary &&
+      existingEvent.getStartTime().getTime() === newEvent.start.dateTime.getTime() &&
+      existingEvent.getEndTime().getTime() === newEvent.end.dateTime.getTime()
+    ) {
+      return true; // Event already exists
+    }
+  }
+
+  return false; // Event does not exist
+}
+
+function clearCalendar() {
+  var prova = 'prova'; // Replace with your calendar name
+  var calendar = getCalendarByName(prova);
+
+  // Get all events in the calendar
+  var events = calendar.getEvents(new Date("2000-01-01"), new Date("2100-01-01")); // Replace with a suitable date range
+
+  // Delete all events in the calendar
+  for (var i = 0; i < events.length; i++) {
+    events[i].deleteEvent();
+  }
+}
+
+function addEventToCalendar() {
+  // Clear the "prova" calendar first
+  clearCalendar();
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+
+  var prova = 'prova';
+  var calendar = getCalendarByName(prova);
+
+  for (var i = 1; i < data.length; i++) {
+    var event = {
+      'summary': data[i][1],
+      'start': {
+        'dateTime': new Date(data[i][2]),
+        'timeZone': 'Europe/Rome'
+      },
+      'end': {
+        'dateTime': new Date(data[i][3]),
+        'timeZone': 'Europe/Rome'
+      },
+      'description': data[i][4]
+    };
+
+    if (!isEventAlreadyAdded(calendar, event)) {
+      calendar.createEvent(event.summary, event.start.dateTime, event.end.dateTime, {
+        'description': event.description});
+    }
+  }
+}
+
+//---------------------------------
+// non cancella gli eventi, prima funzionava
+
+function addEventToCalendar() {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = sheet.getDataRange().getValues();
+  
+    // Replace 'ore_aggiuntive' with the name of your specific calendar
+    var ore_aggiuntive = 'ore_aggiuntive';
+    
+    // Find the calendar by name
+    var calendar = getCalendarByName(ore_aggiuntive);
+  
+    // Loop through the rows in the sheet
+    for (var i = 1; i < data.length; i++) {
+      var event = {
+        'summary': data[i][1], // Event Name
+        'start': {
+          'dateTime': new Date(data[i][2]), // Start Date
+          'timeZone': 'Europe/Rome' // Set to Florence timezone
+        },
+        'end': {
+          'dateTime': new Date(data[i][3]), // End Date
+          'timeZone': 'Europe/Rome'
+        },
+        'description': data[i][4] // Description (if available)
+      };
+  
+      // Check if the event already exists in the custom calendar
+      if (!isEventAlreadyAdded(calendar, event)) {
+        // Create the event in the custom calendar
+        calendar.createEvent(event.summary, event.start.dateTime, event.end.dateTime, event);
+      }
+    }
+  }
+  
+  // Function to get a calendar by name
+  function getCalendarByName(ore_aggiuntive) {
+    var calendars = CalendarApp.getCalendarsByName(ore_aggiuntive);
+    if (calendars.length > 0) {
+      return calendars[0];
+    } else {
+      throw new Error('Calendar not found: ' + ore_aggiuntive);
+    }
+  }
+  
+  // Function to check if an event already exists in a calendar
+  function isEventAlreadyAdded(calendar, newEvent) {
+    var events = calendar.getEvents(newEvent.start.dateTime, newEvent.end.dateTime);
+  
+    for (var i = 0; i < events.length; i++) {
+      var existingEvent = events[i];
+      // Compare event details (summary, start time, end time) to check for duplicates
+      if (
+        existingEvent.getTitle() === newEvent.summary &&
+        existingEvent.getStartTime().getTime() === newEvent.start.dateTime.getTime() &&
+        existingEvent.getEndTime().getTime() === newEvent.end.dateTime.getTime()
+      ) {
+        return true; // Event already exists
+      }
+    }
+  
+    return false; // Event does not exist
+  }
+
+
+
+/////////////// Ultimo sicuramente funzionante ma che non  cancella tutto
+// non cancella gli eventi, prima funzionava
+
+function addEventToCalendar() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+
+  // Replace 'ore_aggiuntive' with the name of your specific calendar
+  var ore_aggiuntive = 'ore_aggiuntive';
+  
+  // Find the calendar by name
+  var calendar = getCalendarByName(ore_aggiuntive);
+
+  // Loop through the rows in the sheet
+  for (var i = 1; i < data.length; i++) {
+    var event = {
+      'summary': data[i][1], // Event Name
+      'start': {
+        'dateTime': new Date(data[i][2]), // Start Date
+        'timeZone': 'Europe/Rome' // Set to Florence timezone
+      },
+      'end': {
+        'dateTime': new Date(data[i][3]), // End Date
+        'timeZone': 'Europe/Rome'
+      },
+      'description': data[i][4] // Description (if available)
+    };
+
+    // Check if the event already exists in the custom calendar
+    if (!isEventAlreadyAdded(calendar, event)) {
+      // Create the event in the custom calendar
+      calendar.createEvent(event.summary, event.start.dateTime, event.end.dateTime, event);
+    }
+  }
+}
+
+// Function to get a calendar by name
+function getCalendarByName(ore_aggiuntive) {
+  var calendars = CalendarApp.getCalendarsByName(ore_aggiuntive);
+  if (calendars.length > 0) {
+    return calendars[0];
+  } else {
+    throw new Error('Calendar not found: ' + ore_aggiuntive);
+  }
+}
+
+// Function to check if an event already exists in a calendar
+function isEventAlreadyAdded(calendar, newEvent) {
+  var events = calendar.getEvents(newEvent.start.dateTime, newEvent.end.dateTime);
+
+  for (var i = 0; i < events.length; i++) {
+    var existingEvent = events[i];
+    // Compare event details (summary, start time, end time) to check for duplicates
+    if (
+      existingEvent.getTitle() === newEvent.summary &&
+      existingEvent.getStartTime().getTime() === newEvent.start.dateTime.getTime() &&
+      existingEvent.getEndTime().getTime() === newEvent.end.dateTime.getTime()
+    ) {
+      return true; // Event already exists
+    }
+  }
+
+  return false; // Event does not exist
+}
+
+////////////////////////////////////
+
+//////Nuovo di chat gpt dovrebbe cancellare prima tutti gli eventi
+function deleteAllEventsInCalendar() {
+  var ore_aggiuntive = 'ore_aggiuntive';
+  var calendar = getCalendarByName(ore_aggiuntive);
+  var events = calendar.getEvents(new Date(0), new Date(new Date().getTime() + (365 * 24 * 60 * 60 * 1000))); // Get events from now until 1 year in the future
+
+  for (var i = 0; i < events.length; i++) {
+    var event = events[i];
+    event.deleteEvent(); // Delete each event
+  }
+}
+
+function addEventToCalendar() {
+  deleteAllEventsInCalendar(); // Delete all events in the calendar first
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  var ore_aggiuntive = 'ore_aggiuntive';
+  var calendar = getCalendarByName(ore_aggiuntive);
+
+  for (var i = 1; i < data.length; i++) {
+    var event = {
+      'summary': data[i][1],
+      'start': {
+        'dateTime': new Date(data[i][2]),
+        'timeZone': 'Europe/Rome'
+      },
+      'end': {
+        'dateTime': new Date(data[i][3]),
+        'timeZone': 'Europe/Rome'
+      },
+      'description': data[i][4]
+    };
+
+    calendar.createEvent(event.summary, event.start.dateTime, event.end.dateTime, event);
+  }
+}
+
+function getCalendarByName(ore_aggiuntive) {
+  var calendars = CalendarApp.getCalendarsByName(ore_aggiuntive);
+  if (calendars.length > 0) {
+    return calendars[0];
+  } else {
+    throw new Error('Calendar not found: ' + ore_aggiuntive);
+  }
+}

@@ -56,6 +56,7 @@ def menu():
         print("33 - Verifica se è un numero primo")
         print("34 - Scomposizione in fattori primi")
         print("35 - Trova le permutazioni")
+        print("36 - Da decimale a binario")
 
         print("0 - Esci")
     
@@ -76,6 +77,7 @@ def menu():
             calcola_cono()
         elif scelta == "3":
             calcola_parallelepipedo()
+    
         elif scelta == "4":
             calcola_pitagora()
         elif scelta == "5":
@@ -140,6 +142,8 @@ def menu():
             input_factorization()
         elif scelta == "35":
             find_permutations()
+        elif scelta == "36":
+            decimale_binario()
         elif scelta == "0":
             break
         else:
@@ -149,14 +153,17 @@ def validita_triangolo():
 
     print("VALIDITÀ TRIANGOLO")
 
+    # inserimento dati
     a=input("Lato a: ")
     b=input("Lato b: ")
     c=input("Lato c: ")
 
+    # casting delle variabili da string a float
     a=float(a)
     b=float(b)
     c=float(c)
 
+    # classificazione tringolo in equilatero, scaleno, isoscele
     if b+c>a and c+a>b and a+b>c:
         
         if a==b==b==c:
@@ -165,6 +172,9 @@ def validita_triangolo():
             print("Isoscele")
         else:
             print("Scaleno")
+    
+    # se la lunghezza dei lati non è compatibile con i tipi sopra indicati
+    # verifica che se la somma di due lati è inferiore a quella del lato rimanente
     else:
         print("Triangolo non valido!!")
         if b+c<=a:
@@ -1650,6 +1660,40 @@ def find_permutations():
     permutazioni(input_set)
     print("Il numero di permutazioni possibili è: ", permutations)
 
+def decimale_binario():
+    print("CONVERTI DA DECIMALE A BINARIO")
+    list = []
+
+    n = 383883
+
+    n=int( input("inserisci numero: "))
+    print("Numero: ")
+    print(n)
+    print()
+
+    a = n
+    print("quoziente","\t","resto")
+    while a > 0:
+        resto = a % 2
+        a = a//2
+        list.append(resto)
+        print(str(a), "\t", str( resto))
+
+    print()
+    print("Lista:")		
+    print(list)
+
+    print("Lista invertita:")
+    list_reverse = list [::-1]
+    print(list_reverse)
+
+    print()
+    print("Numero binario:")
+    for element in list_reverse:
+        print(str(element),end='')
+
+
+    print()
 
 ##########################
 menu()
