@@ -1,3 +1,5 @@
+
+# Python
 print("Di lauro è un casinista")  #le "" indicano una stringa di testo
 print("E' vero!!!!!! Molto")
 

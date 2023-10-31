@@ -57,6 +57,7 @@ def menu():
         print("34 - Scomposizione in fattori primi")
         print("35 - Trova le permutazioni")
         print("36 - Da decimale a binario")
+        print("37 - Numero segreto")
 
         print("0 - Esci")
     
@@ -144,6 +145,8 @@ def menu():
             find_permutations()
         elif scelta == "36":
             decimale_binario()
+        elif scelta == "37":
+            numero_segreto()
         elif scelta == "0":
             break
         else:
@@ -1692,8 +1695,25 @@ def decimale_binario():
     for element in list_reverse:
         print(str(element),end='')
 
+def numero_segreto():
+    numero_segreto = random.randint(1, 100)
+tentativi = 0
 
-    print()
+while True:
+    tentativo = int(input("Indovina il numero (da 10 a 100): "))
+    tentativi += 1
+
+    if tentativo < numero_segreto:
+        print("Troppo  basso! Prova di nuovo.")
+        print()
+    elif tentativo > numero_segreto:
+        print("Troppo alto! Prova di nuovo.")
+        print()
+    else:
+        print(f"Congratulazioni! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
+        break
+
+
 
 ##########################
 menu()
