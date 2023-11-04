@@ -58,6 +58,8 @@ def menu():
         print("35 - Trova le permutazioni")
         print("36 - Da decimale a binario")
         print("37 - Numero segreto")
+        print("38 - Celsius - Fahrenheit")
+        print("39 - Termometri")
 
         print("0 - Esci")
     
@@ -78,7 +80,6 @@ def menu():
             calcola_cono()
         elif scelta == "3":
             calcola_parallelepipedo()
-    
         elif scelta == "4":
             calcola_pitagora()
         elif scelta == "5":
@@ -147,6 +148,10 @@ def menu():
             decimale_binario()
         elif scelta == "37":
             numero_segreto()
+        elif scelta == "38":
+            celsius_fahrenheit()
+        elif scelta == "39":
+            termometri()
         elif scelta == "0":
             break
         else:
@@ -1697,21 +1702,77 @@ def decimale_binario():
 
 def numero_segreto():
     numero_segreto = random.randint(1, 100)
-tentativi = 0
+    tentativi = 0
 
-while True:
-    tentativo = int(input("Indovina il numero (da 10 a 100): "))
-    tentativi += 1
+    while True:
+        tentativo = int(input("Indovina il numero (da 10 a 100): "))
+        tentativi += 1
 
-    if tentativo < numero_segreto:
-        print("Troppo  basso! Prova di nuovo.")
-        print()
-    elif tentativo > numero_segreto:
-        print("Troppo alto! Prova di nuovo.")
-        print()
+        if tentativo < numero_segreto:
+            print("Troppo  basso! Prova di nuovo.")
+            print()
+        elif tentativo > numero_segreto:
+            print("Troppo alto! Prova di nuovo.")
+            print()
+        else:
+            print(f"Congratulazioni! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
+            break
+
+def celsius_fahrenheit():
+    scelta = input("""Vuoi convertire 
+                   \n da Celsius a Fahrenheit (C), 
+                   \n da Fahrenheit a Celsius (F)? 
+                   \n da Kelvin a Celsius (K), 
+                   \n da Celsius a Kelvin (CK): """).upper()
+
+    if scelta == 'C':
+        celsius = float(input("Inserisci la temperatura in gradi Celsius: "))
+        fahrenheit = (celsius * 9/5) + 32
+        print(f"{celsius}°C corrispondono a {fahrenheit}°F")
+    elif scelta == 'F':
+        fahrenheit = float(input("Inserisci la temperatura in gradi Fahrenheit: "))
+        celsius = (fahrenheit - 32) * 5/9
+        print(f"{fahrenheit}°F corrispondono a {celsius}°C")
+    elif scelta == 'K':
+        kelvin = float(input("Inserisci la temperatura in gradi Kelvin: "))
+        celsius = kelvin - 273.16
+        print(f"{kelvin}°K corrispondono a {celsius}°C")
+    elif scelta == "CK":
+        celsius = float(input("Inserisci la temperatura in gradi Celsius: "))
+        kelvin = celsius + 273.16
+        print(f"{celsius}°C corrispondono a {kelvin}°K")     
     else:
-        print(f"Congratulazioni! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
-        break
+        print("Scelta non valida. Usa 'C' o 'F'.")
+
+## Restituisce una tabella con le temperature convertite in varie unità diverse
+def termometri():
+    min_c = -30
+    max_c = 100
+    
+    data = [] # crea la lista per tutte le temperature
+
+    
+    for i in range(min_c,max_c):
+        celsius = i + 1
+        fahrenheit = ((celsius) * 9/5) + 32
+        kelvin = celsius + 273.16
+
+        data.append((celsius, kelvin, fahrenheit))
+
+    #print(data)
+
+    # Ordina la lista
+    data.reverse() 
+    #print(data)
+    
+    print("Celsius °C\tKelvin °K\tFahrnheit °F\n-------------------------------------")
+
+    for celsius, kelvin, fahrenheit in data:
+        print(f"{celsius:.2f}\t{kelvin:.2f}\t{fahrenheit:.2f}") # limita i numero di decimali
+
+
+
+
 
 
 
