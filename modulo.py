@@ -1771,10 +1771,68 @@ def termometri():
         print(f"{celsius:.2f}\t{kelvin:.2f}\t{fahrenheit:.2f}") # limita i numero di decimali
 
 
+## Esempio di programmazione orientata agli oggetti
+# Definizione di una classe "Persona"
+def classe_persona():
+
+    print("""    class Persona:
+        # Costruttore della classe
+        def __init__(self, nome, cognome, eta):
+            self.nome = nome
+            self.cognome = cognome
+            self.eta = eta
+
+        # Metodo per ottenere il nome completo
+        def nome_completo(self):
+            return f"{self.nome} {self.cognome}"
+
+        # Metodo per incrementare l'età
+        def invecchia(self, anni):
+            self.eta += anni
+
+    # Creazione di oggetti Persona
+    persona1 = Persona("Mario", "Rossi", 30)
+    persona2 = Persona("Luca", "Bianchi", 25)
+
+    # Accesso agli attributi e chiamata dei metodi
+    print(f"{persona1.nome_completo()} ha {persona1.eta} anni.")
+    print(f"{persona2.nome_completo()} ha {persona2.eta} anni.")
+
+    persona1.invecchia(1)
+    print(f"Dopo essere invecchiato, {persona1.nome_completo()} ha {persona1.eta} anni.")""")
+    print()
+    class Persona:
+        # Costruttore della classe
+        def __init__(self, nome, cognome, eta):
+            self.nome = nome
+            self.cognome = cognome
+            self.eta = eta
+
+        # Metodo per ottenere il nome completo
+        def nome_completo(self):
+            return f"{self.nome} {self.cognome}"
+
+        # Metodo per incrementare l'età
+        def invecchia(self, anni):
+            self.eta += anni
+
+    # Creazione di oggetti Persona
+    persona1 = Persona("Mario", "Rossi", 30)
+    persona2 = Persona("Luca", "Bianchi", 25)
+
+    # Accesso agli attributi e chiamata dei metodi
+    print(f"{persona1.nome_completo()} ha {persona1.eta} anni.")
+    print(f"{persona2.nome_completo()} ha {persona2.eta} anni.")
+
+    persona1.invecchia(1)
+    print(f"Dopo essere invecchiato, {persona1.nome_completo()} ha {persona1.eta} anni.")
+
 
 
 
 
 
 ##########################
-menu()
+#menu()
+
+classe_persona()
