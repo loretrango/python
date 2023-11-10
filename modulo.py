@@ -1722,7 +1722,7 @@ def numero_segreto():
             print(f"CONGRATULAZIONI! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
             break
 
-def conversione_temperatura():
+def conversione_temperatura(): ## converte le temperature nelle varie unità di misura
     scelta = input("""Vuoi convertire 
                    \n da Celsius a Fahrenheit (C), 
                    \n da Fahrenheit a Celsius (F)? 
