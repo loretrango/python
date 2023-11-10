@@ -58,7 +58,7 @@ def menu():
         print("35 - Trova le permutazioni")
         print("36 - Da decimale a binario")
         print("37 - Numero segreto")
-        print("38 - Celsius - Fahrenheit")
+        print("38 - Conversione temperatura")
         print("39 - Termometri")
 
         print("0 - Esci")
@@ -149,7 +149,7 @@ def menu():
         elif scelta == "37":
             numero_segreto()
         elif scelta == "38":
-            celsius_fahrenheit()
+            conversione_temperatura()
         elif scelta == "39":
             termometri()
         elif scelta == "0":
@@ -1701,24 +1701,28 @@ def decimale_binario():
         print(str(element),end='')
 
 def numero_segreto():
-    numero_segreto = random.randint(1, 100)
+    print("Indovina il numero segreto, da 1 al numero di tua scelta:")
+    num_max = int(input(""))
+    
+    
+    numero_segreto = random.randint(1, num_max)
     tentativi = 0
 
     while True:
-        tentativo = int(input("Indovina il numero (da 10 a 100): "))
+        tentativo = int(input(f"Indovina il numero (da 1 a {num_max}): "))
         tentativi += 1
 
         if tentativo < numero_segreto:
-            print("Troppo  basso! Prova di nuovo.")
+            print("Troppo  BASSO!")
             print()
         elif tentativo > numero_segreto:
-            print("Troppo alto! Prova di nuovo.")
+            print("Troppo ALTO!")
             print()
         else:
-            print(f"Congratulazioni! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
+            print(f"CONGRATULAZIONI! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
             break
 
-def celsius_fahrenheit():
+def conversione_temperatura():
     scelta = input("""Vuoi convertire 
                    \n da Celsius a Fahrenheit (C), 
                    \n da Fahrenheit a Celsius (F)? 
@@ -1833,6 +1837,6 @@ def classe_persona():
 
 
 ##########################
-#menu()
+menu()
 
-classe_persona()
+#classe_persona()
