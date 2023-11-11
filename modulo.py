@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import psutil #PC temperature
 from itertools import permutations
+from turtle import Turtle
 
 from Solidi import ParallelepipedoRetto
 
@@ -567,7 +568,7 @@ def scatter_plot():
 
     print("SCATTER PLOT")
     print("Grafico con numerio casuali")
-    x = np.random.randint(100, size=(100))
+    x = np.random.randint(100, size=(100)) # lista di numeri casuali di 100 elementi, da 0 a 100
     y = np.random.randint(100, size=(100))
     colors = np.random.randint(100, size=(100))
     sizes = 10 * np.random.randint(100, size=(100))
@@ -1701,11 +1702,13 @@ def decimale_binario():
         print(str(element),end='')
 
 def numero_segreto():
-    print("Indovina il numero segreto, da 1 al numero di tua scelta:")
+    print("Indovina il numero segreto, nell'intervallo a tua scelta tra due numeri.")
+    print("Scegli il numero minimo:")
+    num_min = int(input(""))
+    print("Scegli il numero massimo:")
     num_max = int(input(""))
     
-    
-    numero_segreto = random.randint(1, num_max)
+    numero_segreto = random.randint(num_min, num_max)
     tentativi = 0
 
     while True:
@@ -1831,10 +1834,27 @@ def classe_persona():
     persona1.invecchia(1)
     print(f"Dopo essere invecchiato, {persona1.nome_completo()} ha {persona1.eta} anni.")
 
+def turtle():
 
+    t = Turtle()
+    t.pensize(3)
+    
 
+    for i in range(8):
+        for i in range (6):
+            t.color('blue')
+            t.forward(30)
+            t.right(45)
+            
+        
+        for i in range(9):
+            t.color('green')
+            t.forward(30)
+            t.left(45)
+    
+    t.screen.mainloop()
 
-
+#turtle()
 
 ##########################
 menu()
