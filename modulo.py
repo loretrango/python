@@ -61,6 +61,7 @@ def menu():
         print("37 - Numero segreto")
         print("38 - Conversione temperatura")
         print("39 - Termometri")
+        print("40 - Turtle: disegna con la tartaruga")
 
         print("0 - Esci")
     
@@ -153,6 +154,8 @@ def menu():
             conversione_temperatura()
         elif scelta == "39":
             termometri()
+        elif scelta == "40":
+            turtle()
         elif scelta == "0":
             break
         else:
@@ -1711,8 +1714,11 @@ def numero_segreto():
     numero_segreto = random.randint(num_min, num_max)
     tentativi = 0
 
+    lista_tentativi = []
+
     while True:
         tentativo = int(input(f"Indovina il numero (da 1 a {num_max}): "))
+        lista_tentativi.append(tentativo)
         tentativi += 1
 
         if tentativo < numero_segreto:
@@ -1722,7 +1728,28 @@ def numero_segreto():
             print("Troppo ALTO!")
             print()
         else:
+            print()
             print(f"CONGRATULAZIONI! Hai indovinato il numero {numero_segreto} in {tentativi} tentativi")
+            print(lista_tentativi)
+
+            
+            # Plotting the list of numbers as an oriented line
+            plt.plot(lista_tentativi, marker='o', linestyle='-')
+
+            # Adding labels and title
+            plt.xlabel('Index')
+            plt.ylabel('Values')
+            plt.title('Oriented Line Plot of Numbers')
+
+            # Set y-axis limits
+            plt.ylim(num_min, num_max)
+
+            # Set x-axis ticks interval
+            plt.xticks(range(0,len(lista_tentativi),1))
+
+            # Display the plot
+            plt.show()
+
             break
 
 def conversione_temperatura(): ## converte le temperature nelle varie unità di misura
@@ -1838,25 +1865,22 @@ def turtle():
 
     t = Turtle()
     t.pensize(3)
-    
 
     for i in range(8):
-        for i in range (6):
+        for i in range (7):
             t.color('blue')
             t.forward(30)
             t.right(45)
             
-        
-        for i in range(9):
+        for i in range(6):
             t.color('green')
             t.forward(30)
             t.left(45)
     
     t.screen.mainloop()
 
-#turtle()
-
 ##########################
 menu()
 
+#turtle()
 #classe_persona()
