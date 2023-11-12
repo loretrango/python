@@ -62,6 +62,7 @@ def menu():
         print("38 - Conversione temperatura")
         print("39 - Termometri")
         print("40 - Turtle: disegna con la tartaruga")
+        print("41 - Gioco aritmetica al computer")
 
         print("0 - Esci")
     
@@ -156,6 +157,8 @@ def menu():
             termometri()
         elif scelta == "40":
             turtle()
+        elif scelta == "41":
+            gioco_aritmetica()
         elif scelta == "0":
             break
         else:
@@ -1663,6 +1666,7 @@ def set_constructor():
     print(input_set, len(input_set), "elementi unici inseriti (senza doppioni)")
     return input_set
 
+
 # nel menu
 def find_permutations():
     input_set = set_constructor()
@@ -1671,6 +1675,7 @@ def find_permutations():
     print("Il numero di permutazioni possibili è: ", permutations)
     permutazioni(input_set)
     print("Il numero di permutazioni possibili è: ", permutations)
+
 
 def decimale_binario():
     print("CONVERTI DA DECIMALE A BINARIO")
@@ -1704,10 +1709,13 @@ def decimale_binario():
     for element in list_reverse:
         print(str(element),end='')
 
+
 def numero_segreto():
     print("Indovina il numero segreto, nell'intervallo a tua scelta tra due numeri.")
+    
     print("Scegli il numero minimo:")
     num_min = int(input(""))
+    
     print("Scegli il numero massimo:")
     num_max = int(input(""))
     
@@ -1751,6 +1759,7 @@ def numero_segreto():
             plt.show()
 
             break
+
 
 def conversione_temperatura(): ## converte le temperature nelle varie unità di misura
     scelta = input("""Vuoi convertire 
@@ -1879,8 +1888,37 @@ def turtle():
     
     t.screen.mainloop()
 
+
+def gioco_aritmetica():
+
+    numero_domande = int(input("Inserisci il numero di domande: "))
+    punteggio = 0
+
+    for _ in range(numero_domande):
+        # Genera due numeri casuali compresi tra 1 e 20
+        numero1 = random.randint(1, 20)
+        numero2 = random.randint(1, 20)
+
+        # Scegli casualmente un'operazione tra +, -, *
+        operazione = random.choice(['+', '-', '*'])
+
+        # Genera la domanda e ottieni la risposta corretta
+        domanda = f"{numero1} {operazione} {numero2}"
+        risposta_corretta = eval(domanda)  # Valuta l'espressione
+
+        # Chiedi all'utente di risolvere la domanda
+        risposta_utente = float(input(f"Risolvi: {domanda} = "))
+
+        # Verifica la risposta e aggiorna il punteggio
+        if risposta_utente == risposta_corretta:
+            print("Corretto!\n")
+            punteggio += 1
+        else:
+            print(f"Sbagliato. La risposta corretta era {risposta_corretta}\n")
+
+    print(f"Gioco terminato. Punteggio finale: {punteggio}/{numero_domande}")
+
+
+
 ##########################
 menu()
-
-#turtle()
-#classe_persona()
