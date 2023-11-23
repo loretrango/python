@@ -1892,9 +1892,12 @@ def turtle():
 def gioco_aritmetica():
 
     numero_domande = int(input("Inserisci il numero di domande: "))
+    print()
     punteggio = 0
+    tempo_inizio = datetime.datetime.today()
 
     for _ in range(numero_domande):
+        tempo_inizio_es = datetime.datetime.today()
         # Genera due numeri casuali compresi tra 1 e 20
         numero1 = random.randint(1, 20)
         numero2 = random.randint(1, 20)
@@ -1911,14 +1914,29 @@ def gioco_aritmetica():
 
         # Verifica la risposta e aggiorna il punteggio
         if risposta_utente == risposta_corretta:
-            print("Corretto!\n")
+            print("Corretto!")
             punteggio += 1
         else:
-            print(f"Sbagliato. La risposta corretta era {risposta_corretta}\n")
+            print(f"Sbagliato. La risposta corretta era {risposta_corretta}")
+        
+        tempo_fine_es = datetime.datetime.today()
+        tempo_impiegato_es = tempo_fine_es - tempo_inizio_es
+        print(f"Tempo impiegato: {tempo_impiegato_es}")
+        print()
 
     print(f"Gioco terminato. Punteggio finale: {punteggio}/{numero_domande}")
+    tempo_fine = datetime.datetime.today()
+    tempo_impiegato = tempo_fine - tempo_inizio
+    print(f"Tempo complessivo impiegato: \t{tempo_impiegato}")
+    media_tempo_domanda = tempo_impiegato / numero_domande
+    print(f"Tempo medio a domanda: \t\t{media_tempo_domanda}")
 
+def circonferenza():
+    raggio = int(input("raggio: "))
+    circonferenza = 2 * raggio * math.pi
+    print(circonferenza)
 
+#circonferenza()
 
 ##########################
 menu()
