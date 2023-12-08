@@ -63,6 +63,7 @@ def menu():
         print("39 - Termometri")
         print("40 - Turtle: disegna con la tartaruga")
         print("41 - Gioco aritmetica al computer")
+        print("42 - Calcolatrice")
 
         print("0 - Esci")
     
@@ -159,6 +160,8 @@ def menu():
             turtle()
         elif scelta == "41":
             gioco_aritmetica()
+        elif scelta == "42":
+            calcolatrice()
         elif scelta == "0":
             break
         else:
@@ -1935,6 +1938,22 @@ def circonferenza():
     raggio = int(input("raggio: "))
     circonferenza = 2 * raggio * math.pi
     print(circonferenza)
+
+def calcolatrice():
+    a = float(input("Primo numero: "))
+    segno = input("Segno (+, -, *, /, //(divisione senza decimali), %(operazione resto)): ")
+    b = float(input("Secondo numero: "))
+
+    espressione = f"{a} {segno} {b}"
+    print(espressione)
+
+    risultato = eval(espressione)
+    print("risultato = ", risultato)
+
+    espressione_2 = input("Scrivi l'esperesssione: ")
+    print(espressione_2)
+    risultato_2 = eval(espressione_2)
+    print("Risultato = ", risultato_2)
 
 #circonferenza()
 
