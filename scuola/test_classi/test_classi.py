@@ -80,8 +80,60 @@ class Rettangolo:
         else:
             return f"Le aree dei rettangoli sono uguali"
         
+class Parallelogramma:
+    def __init__(self, a = None, b = None, ha = None, hb = None, area = None):
+        self.a = a
+        self.b = b
+        self.ha = ha
+        self.hb = hb
+        self.area = area
+
+    def calcola_area(self):
+        if self.a is not None and self.ha is not None:
+            area = self.a * self.ha
+            return area
+        elif self.b is not None and self.hb is not None:
+            area = self.b * self.hb
+            return area
+
+    def calcola_ha(self):
+        if self.area is not None and self.a is not None:
+            ha = self.area / self.a
+            return ha
+    
+    def calcola_hb(self):
+        if self.area is not None and self.b is not None:
+            hb = self.area / self.b
+            return hb
+
+    def calcola_a(self):
+        if self.area is not None and self.ha is not None:
+            a = self.area / self.ha
+            return a
+    
+    def calcola_b(self):
+        if self.area is not None and self.hb is not None:
+            b = self.area / self.hb
+            return b
+        
+    def set_area(self, area):
+        self.area = area
 
  
+class Trapezio:
+    def __init__(self) -> None:
+        pass
+
+class Quadrato:
+    def __init__(self) -> None:
+        pass
+
+class Rombo:
+    def __init__(self) -> None:
+        pass
+
+
+### RETTANGOLI
 print("Esempio di programmazione orientata agli oggetti, varie istanze di rettangoli")
 # Crea l'oggetto r1 
 print("r1")
@@ -125,13 +177,25 @@ print("b = ",r4.b)
 print("Area: ",r4.get_area())
 print()
 
-
 # confronta le aree
 confronto1_str = "r1.confronta_area(r2)"
 print(confronto1_str)
-print(eval(confronto1_str)
-      )
+print(eval(confronto1_str))
 
+print()
+### PARALLELOGRAMMI
+print("PARALLELOGRAMMI")
 
-
+p1 = Parallelogramma(ha=2,area=10)
+print("p1")
+print("a: ",p1.a)
+print("b: ",p1.b)
+print("ha: ",p1.ha)
+print("hb: ",p1.hb)
+print("Area: ", p1.area)
+print(p1.area)
+print(p1.area)
+ha = p1.calcola_ha()
+print("Calcola ha: ", ha)
+print("Calcola a: ", p1.calcola_a())
 
