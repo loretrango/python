@@ -2,9 +2,35 @@
 class Rettangolo:
     ## costruttore dell'oggetto
     def __init__(self, a = None, b = None, area = None):
-        self.a = a
-        self.b = b
-        self.area = area
+#        self.a = a
+#        self.b = b
+#        self.area = area
+        if area is not None and a is not None:
+            self.b = area / a
+            self.a = a
+            
+        elif area is not None and b is not None:
+            self.a = area / b
+            self.b = b
+            
+        elif a is not None and b is not None:
+            self.a = a
+            self.b = b
+        
+        elif a is None and b is None:
+            self.a = None
+            self.b = None
+    
+    ## repr method
+    def __repr__(self):
+        if self.a is not None and self.b is not None and self.area is not None:
+            return f"Rettangolo({self.a},{self.b},{self.area}"
+        elif self.a is not None and self.b is not None and self.area is None:
+            return f"Rettangolo({self.a},{self.b},None"
+        elif self.a is not None and self.area is not None:
+            return f"Rettangolo({self.a},None,{self.area}"
+        elif self.b is not None and self.area is not None:
+            return f"Rettangolo(None,{self.b},{self.area}"
 
     ## Metodi get
     def get_a(self):
@@ -18,9 +44,17 @@ class Rettangolo:
         return perimetro
     
     def get_area(self):
-        area = self.a * self.b
-        return area
+        if (self.a is None and self.b is None) or (self.a is None and self.area is None) or (self.b is None and self.area is None):
+            #raise ValueError("Non è possibile calcolare l'area")
+            print("impossibile calcolare l'area")
+            
 
+        elif self.a is not None and self.b is not None:
+            area = self.a * self.b
+        else:
+            area = self.area
+
+        return area
 
     # Stampa le misure
     def print_misure(self):
@@ -36,6 +70,8 @@ class Rettangolo:
     def confronta_area(self, altro_rettangolo):
         area_self = self.get_area()
         area_altro = altro_rettangolo.get_area()
+        rapporto_aree = area_self/area_altro
+        print("Rapporto area primo rett/secondo rett:",rapporto_aree)
 
         if area_self > area_altro:
             return f"L'area del primo rettangolo è maggiore del secondo"
@@ -43,17 +79,59 @@ class Rettangolo:
             return f"Larea del secondo rettangolo è maggiore del primo"
         else:
             return f"Le aree dei rettangoli sono uguali"
- 
+        
 
+ 
+print("Esempio di programmazione orientata agli oggetti, varie istanze di rettangoli")
 # Crea l'oggetto r1 
+print("r1")
 r1 = Rettangolo(2,4)
+print("Rettangolo(2,4)")
+print("a = ",r1.a)
+print("b = ",r1.b)
 print("Area: ",r1.get_area())
 print("Perimetro: ", r1.get_perimetro())
+print()
+
 
 # Crea l'oggetto r2
+print("r2")
 r2 = Rettangolo(33,55)
+print("Rettangolo(33,55)")
+print("a = ",r2.a)
+print("b = ",r2.b)
 print("Area: ",r2.get_area())
 print("Perimetro: ", r2.get_perimetro())
+print()
+
+# Crea l'oggetto r3, solo alcuni parametri
+print("r3")
+r3_str = "Rettangolo(None,4,8)"
+r3 = eval(r3_str)
+#print("Rpresentation of the object: ", repr(r3))
+print(r3_str)
+print("a = ",r3.a)
+print("b = ",r3.b)
+print("Area: ",r2.get_area())
+print("Perimetro: ", r2.get_perimetro())
+print()
+
+# Crea l'oggetto r4, tutti i parametri mancanti
+print("r4")
+r4 = Rettangolo(4,None,40)
+print("Rettangolo(4,None,40)")
+print("a = ",r4.a)
+print("b = ",r4.b)
+print("Area: ",r4.get_area())
+print()
+
 
 # confronta le aree
-print(r1.confronta_area(r2))
+confronto1_str = "r1.confronta_area(r2)"
+print(confronto1_str)
+print(eval(confronto1_str)
+      )
+
+
+
+
