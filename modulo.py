@@ -5,12 +5,13 @@ import pdfkit
 import random
 import tkinter as tk
 import time
+from tkinter import Text, Scrollbar
 
 import matplotlib.pyplot as plt
 import numpy as np
 import psutil #PC temperature
 from itertools import permutations
-from turtle import Turtle
+#from turtle import Turtle
 
 from Solidi import ParallelepipedoRetto
 
@@ -64,6 +65,7 @@ def menu():
         print("40 - Turtle: disegna con la tartaruga")
         print("41 - Gioco aritmetica al computer")
         print("42 - Calcolatrice")
+        print("43 - Area Trapezio con GUI")
 
         print("0 - Esci")
     
@@ -162,6 +164,8 @@ def menu():
             gioco_aritmetica()
         elif scelta == "42":
             calcolatrice()
+        elif scelta == "43":
+            trapezio_gui()
         elif scelta == "0":
             break
         else:
@@ -1906,7 +1910,7 @@ def gioco_aritmetica():
         numero2 = random.randint(1, 20)
 
         # Scegli casualmente un'operazione tra +, -, *
-        operazione = random.choice(['+', '-', '*'])
+        operazione = random.choice(['+'])
 
         # Genera la domanda e ottieni la risposta corretta
         domanda = f"{numero1} {operazione} {numero2}"
@@ -1940,21 +1944,80 @@ def circonferenza():
     print(circonferenza)
 
 def calcolatrice():
-    a = float(input("Primo numero: "))
-    segno = input("Segno (+, -, *, /, //(divisione senza decimali), %(operazione resto)): ")
-    b = float(input("Secondo numero: "))
+    print("""1 - Operazione tra due numeri a e b\n2 - Scrivi la tua espressione""")
+    scelta = input()
 
-    espressione = f"{a} {segno} {b}"
-    print(espressione)
 
-    risultato = eval(espressione)
-    print("risultato = ", risultato)
+    if scelta == "1":
+        a = float(input("Primo numero: "))
+        segno = input("Segno (+, -, *, /, //(divisione senza decimali), %(operazione resto)): ")
+        b = float(input("Secondo numero: "))
 
-    espressione_2 = input("Scrivi l'esperesssione: ")
-    print(espressione_2)
-    risultato_2 = eval(espressione_2)
-    print("Risultato = ", risultato_2)
+        espressione = f"{a} {segno} {b}"
+        print(espressione)
 
+        risultato = eval(espressione)
+        print("risultato = ", risultato)
+    
+    elif scelta == "2":
+        espressione_2 = input("Scrivi l'esperesssione: ")
+        print(espressione_2)
+        risultato_2 = eval(espressione_2)
+        print("Risultato = ", risultato_2)
+
+class TrapezoidCalculator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Calcolatore Area Trapezio")
+
+        # Create labels and entry widgets for input
+        self.label_base_minore = tk.Label(root, text="Base minore b:")
+        self.label_base_minore.grid(row=0, column=0)
+        self.entry_base_minore = tk.Entry(root)
+        self.entry_base_minore.grid(row=0, column=1)
+
+        self.label_base_maggiore = tk.Label(root, text="Base maggiore B:")
+        self.label_base_maggiore.grid(row=1, column=0)
+        self.entry_base_maggiore = tk.Entry(root)
+        self.entry_base_maggiore.grid(row=1, column=1)
+
+        self.label_altezza = tk.Label(root, text="Altezza h:")
+        self.label_altezza.grid(row=2, column=0)
+        self.entry_altezza = tk.Entry(root)
+        self.entry_altezza.grid(row=2, column=1)
+
+        # Create a button to calculate the area
+        self.calculate_button = tk.Button(root, text="Calcola Area", command=self.calculate_area)
+        self.calculate_button.grid(row=3, column=0, columnspan=2)
+
+        # Create a Text widget to display the result
+        self.result_textbox = Text(root, height=10, width=40)
+        self.result_textbox.grid(row=4, column=0, columnspan=2, pady=10)
+
+    def calculate_area(self):
+        b = float(self.entry_base_minore.get())
+        B = float(self.entry_base_maggiore.get())
+        h = float(self.entry_altezza.get())
+        area = (b + B) * h / 2
+        passaggi = f"""Base minore = {b}\nBase maggiore = {B}\nAltezza = {h}\nArea = {area}\n\nFormula: \nA = (b+B)*h/2
+=({b}+{B})*{h}/2
+= {b+B}*{h}/2
+= {(b+B)*h}/2
+= {area}"""
+
+
+        self.result_textbox.delete(1.0, tk.END)
+        self.result_textbox.insert(tk.END, passaggi)
+
+def trapezio_gui():
+    # Create the main window
+    root = tk.Tk()
+    app = TrapezoidCalculator(root)
+
+    # Start the Tkinter event loop
+    root.mainloop()
+
+#trapezio_gui()
 #circonferenza()
 
 ##########################
