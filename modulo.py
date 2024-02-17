@@ -54,7 +54,7 @@ def menu():
         print("29 - Temperatura PC - grafico real time")
         print("30 - Tavola numerica CGPT (output su schermo, txt, pdf)")
         print("31 - Divisibility of a number 'n' for a divisor 'divosor'")
-        print("32 - Trova i numeri primi ")
+        print("32 - Trova i numeri primi")
         print("33 - Verifica se è un numero primo")
         print("34 - Scomposizione in fattori primi")
         print("35 - Trova le permutazioni")
@@ -218,32 +218,34 @@ def calcola_pitagora():
         incognita = input("Cosa vuoi calcolare? Cateto(C), Ipotenusa(I): ")
 
 
-    if incognita=='C':
-        cateto1=float(input("Cateto1: "))
+    if incognita =='C':
+        cateto1 = float(input("Cateto1: "))
         print()
         
-        ipotenusa=float(input("Ipotenusa: "))
+        ipotenusa = float(input("Ipotenusa: "))
 
-        while ipotenusa<=cateto1:
-            ipotenusa=float(input("Ipotenusa deve essere maggiore del cateto: "))
+        while ipotenusa <= cateto1:
+            ipotenusa = float(input("Ipotenusa deve essere maggiore del cateto: "))
 
-        cateto2=float(math.sqrt(ipotenusa**2-cateto1**2))
-        
-        print("Cateto2 = radquad(",ipotenusa,"^2 - ", cateto1,"^2)")
-        print("Cateto2 = radquad(",ipotenusa**2," - ", cateto1**2,")")
-        print("Cateto2 = radquad(",ipotenusa**2-cateto2**1,")")
-        print("Cateto2 = ",cateto2)
+        cateto2 = float(math.sqrt(ipotenusa**2-cateto1**2))
+
+        print(f"Cateto2 = ({ipotenusa}**2 - {cateto1}**2)**(1/2)")
+        print(f"Cateto2 = ({ipotenusa**2} - {cateto1**2})**(1/2)")
+        print(f"Cateto2 = ({ipotenusa**2 - cateto1**2})**(1/2)")
+        print(f"Cateto2 = {cateto2}")
+        print(f"Cateto2 = {round(cateto2,2)}")
 
     elif incognita=='I':
-        cateto1=float(input("Cateto1: "))
-        cateto2=float(input("Cateto2: "))
+        cateto1 = float(input("Cateto1: "))
+        cateto2 = float(input("Cateto2: "))
         
-        ipotenusa=float(math.sqrt(cateto1**2+cateto2**2))
+        ipotenusa = (cateto1**2 + cateto2**2)**(1/2)
         
-        print("Ipotenusa = radquad(",cateto1,"^2 + ", cateto2,"^2)")
-        print("Ipotenusa = radquad(",cateto1**2," + ", cateto2**2,")")
-        print("Ipotenusa = radquad(",cateto1**2+cateto2**2,")")
-        print("Ipotenusa = ",ipotenusa)
+        print(f"Ipotenusa = ({cateto2}**2 + {cateto1}**2)**(1/2)")
+        print(f"Ipotenusa = ({cateto2**2} + {cateto1**2})**(1/2)")
+        print(f"Ipotenusa = ({cateto2**2 + cateto1**2})**(1/2)")
+        print(f"Ipotenusa = {ipotenusa}")
+        print(f"Ipotenusa = {round(ipotenusa,2)}")
 ##############
 
 def calcola_parallelepipedo():
@@ -1648,7 +1650,6 @@ def beautiful_plot(): #chatgpt
     # Show the plot
     plt.show()
 
-
 def permutazioni(input_set):
     # find and print all permutations
     permutation_list = list(permutations(input_set))
@@ -1991,7 +1992,7 @@ class TrapezoidCalculator:
         self.calculate_button.grid(row=3, column=0, columnspan=2)
 
         # Create a Text widget to display the result
-        self.result_textbox = Text(root, height=10, width=40)
+        self.result_textbox = Text(root, height=15, width=40) # modificato
         self.result_textbox.grid(row=4, column=0, columnspan=2, pady=10)
 
     def calculate_area(self):
