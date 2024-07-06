@@ -66,6 +66,7 @@ def menu():
         print("41 - Gioco aritmetica al computer")
         print("42 - Calcolatrice")
         print("43 - Area Trapezio con GUI")
+        print("44 - Sasso forbice carta")
 
         print("0 - Esci")
     
@@ -166,10 +167,20 @@ def menu():
             calcolatrice()
         elif scelta == "43":
             trapezio_gui()
+        elif scelta == "44": 
+            sassoForbiceCarta()
         elif scelta == "0":
             break
         else:
             print("Scelta non valida. Riprova.")
+            continue
+
+
+
+
+
+####################################################################
+####################################################################
 
 def validita_triangolo():
 
@@ -2021,5 +2032,50 @@ def trapezio_gui():
 #trapezio_gui()
 #circonferenza()
 
+
+def sassoForbiceCarta():
+    user_wins = 0
+    computer_wins = 0
+    turn = 0
+
+    options = ["rock", "paper", "scissors"]
+
+    while True:
+        user_input = input("Typer rock/paper/scissors or q to quit: ").lower()
+        if user_input == "q":
+            break
+        if user_input not in options:
+            print("Opzione non valida")
+            continue
+
+        random_number = random.randint(0,2)
+        computer_input = options[random_number]
+        print("Scelta del computer: ", computer_input)
+
+        if user_input == "rock" and computer_input == "scissors" \
+            or user_input == "paper" and computer_input == "rock" \
+                or user_input == "scissors" and computer_input == "paper":
+            print("Hai vinto!")
+            user_wins += 1
+            turn += 1
+
+        elif user_input == computer_input:
+            print("Pari")
+            turn += 1
+
+        else:
+            print("Hai PERSO!!")
+            computer_wins += 1
+            turn += 1
+    
+        print("User score: ", user_wins)
+        print("Computer score: ", computer_wins)
+        print("Turno: ", turn)
+        print()
+
+
+
+
 ##########################
+
 menu()
